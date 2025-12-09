@@ -1,0 +1,352 @@
+/* ============================================================================
+   TICKETS PAGE STYLES - Step 3 (Payment & Checkout)
+   ============================================================================
+   Final step of ticket booking flow.
+   Features: Order summary, payment method selection, billing info form.
+   Dark gradient background consistent with step 2.
+   ============================================================================ */
+
+/* ============================================================================
+   PAGE LAYOUT
+   ============================================================================ */
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Progress Steps */
+.progress-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 20px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4a5568;
+    color: #a0aec0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 800;
+    transition: all 0.3s;
+}
+
+.step.active .step-circle {
+    background-color: #10529e;
+    color: white;
+}
+
+.step.completed .step-circle {
+    background-color: #10b981;
+    color: white;
+}
+
+.step-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #a0aec0;
+    text-transform: uppercase;
+}
+
+.step.active .step-label,
+.step.completed .step-label {
+    color: white;
+}
+
+.step-line {
+    width: 100px;
+    height: 2px;
+    background-color: #4a5568;
+}
+
+.step-line.completed {
+    background-color: #10b981;
+}
+
+/* Checkout Container */
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Payment Section */
+.payment-section {
+    background-color: #1e293b;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.payment-section h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.section-block {
+    margin-bottom: 35px;
+}
+
+.section-block h3 {
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* Payment Options */
+.payment-option {
+    background-color: #0f172a;
+    border: 2px solid #334155;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.payment-option:hover {
+    border-color: #10529e;
+}
+
+.payment-option.selected {
+    border-color: #10529e;
+    background-color: rgba(16, 82, 158, 0.1);
+}
+
+.payment-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #60a5fa;
+}
+
+.payment-option span {
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.check-icon {
+    color: #10529e;
+    font-size: 22px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #0f172a;
+    border: 2px solid #334155;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #10529e;
+}
+
+/* Order Summary Section */
+.order-summary-section {
+    background-color: #1e293b;
+    border-radius: 16px;
+    padding: 35px;
+    height: fit-content;
+}
+
+.order-summary-section h2 {
+    color: white;
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+/* Event Info */
+.event-info {
+    margin-bottom: 30px;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.info-row .label {
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.info-row .value {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Price Breakdown */
+.price-breakdown {
+    background-color: #0f172a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.price-row:last-child {
+    margin-bottom: 0;
+}
+
+.amount {
+    color: white;
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background-color: #334155;
+    margin: 18px 0;
+}
+
+.price-row.total {
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    margin-top: 15px;
+}
+
+.price-row.total .amount {
+    font-size: 20px;
+    color: white;
+}
+
+/* Buttons */
+.btn-complete {
+    width: 100%;
+    padding: 16px;
+    background-color: #ff6b4a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 12px;
+}
+
+.btn-complete:hover {
+    background-color: #e55a3a;
+}
+
+.btn-back-seats {
+    width: 100%;
+    padding: 16px;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-back-seats:hover {
+    background-color: #475569;
+}
+
+/* Secure Badge */
+.secure-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #10b981;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.secure-badge i {
+    font-size: 14px;
+}
+
+.step-text {
+    color: #94a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .payment-section,
+    .order-summary-section {
+        padding: 25px;
+    }
+    
+    .payment-section h2,
+    .order-summary-section h2 {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,496 @@
+/* ============================================================================
+   PLAYER DETAILS PAGE STYLES
+   ============================================================================
+   Comprehensive player profile page with statistics and performance data.
+   Matches website color scheme: #10529e (primary blue), white backgrounds.
+   ============================================================================ */
+
+body {
+    background-color: #f5f7fa;
+    padding-top: 60px;
+}
+
+.page-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ============================================================================
+   BACK BUTTON & BREADCRUMB
+   ============================================================================ */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #10529e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 15px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0d4382;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.breadcrumb i {
+    font-size: 10px;
+}
+
+.breadcrumb span:last-child {
+    color: #10529e;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   GRID LAYOUT
+   ============================================================================ */
+.content-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr 350px;
+    gap: 20px;
+}
+
+/* ============================================================================
+   SIDEBAR CARDS
+   ============================================================================ */
+.sidebar-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.sidebar-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-card i {
+    color: #10529e;
+}
+
+/* Match History */
+.match-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.match-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    font-size: 12px;
+}
+
+.match-item .match-type {
+    font-weight: 700;
+    color: #10529e;
+}
+
+.match-item .match-opponent {
+    color: #1a202c;
+    font-weight: 600;
+}
+
+.match-item .match-result {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.match-result.win {
+    color: #10b981;
+}
+
+.match-result.loss {
+    color: #ef4444;
+}
+
+.match-result.draw {
+    color: #f59e0b;
+}
+
+/* International Stats */
+.int-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.int-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.int-stat-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.int-stat-row span {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.int-stat-row strong {
+    font-size: 20px;
+    color: #10529e;
+    font-weight: 800;
+}
+
+/* Club Info Card */
+.club-info-card {
+    text-align: center;
+}
+
+.club-info-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.club-info-card h3 {
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.club-info-card p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Goals Chart */
+.goals-chart {
+    margin-bottom: 15px;
+    height: 200px;
+}
+
+.goals-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.goal-breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.goal-breakdown-item span:first-child {
+    color: #64748b;
+}
+
+.goal-breakdown-item strong {
+    color: #10529e;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   MAIN CONTENT
+   ============================================================================ */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section-card h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-card h2 i {
+    color: #10529e;
+}
+
+/* ============================================================================
+   PLAYER HEADER CARD
+   ============================================================================ */
+.player-header-card {
+    background: linear-gradient(135deg, #10529e, #1e6bc5);
+    color: white;
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    box-shadow: 0 4px 15px rgba(16, 82, 158, 0.3);
+}
+
+.player-photo-section {
+    flex-shrink: 0;
+}
+
+.player-photo-frame {
+    width: 250px;
+    height: 300px;
+    border: 5px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.player-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.player-info-section {
+    flex: 1;
+}
+
+.player-info-section h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.player-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meta-value {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* ============================================================================
+   MARKET VALUE CHART
+   ============================================================================ */
+.market-value-chart {
+    height: 300px;
+}
+
+/* ============================================================================
+   STATS GRID
+   ============================================================================ */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.stat-box {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #10529e;
+}
+
+.stat-box.yellow {
+    background-color: #fef9c3;
+    border-color: #fbbf24;
+}
+
+.stat-box.red {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+}
+
+.stat-icon {
+    font-size: 28px;
+    color: #10529e;
+    margin-bottom: 10px;
+}
+
+.stat-box.yellow .stat-icon {
+    color: #f59e0b;
+}
+
+.stat-box.red .stat-icon {
+    color: #dc2626;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: #10529e;
+    margin-bottom: 5px;
+}
+
+.stat-box.yellow .stat-number {
+    color: #f59e0b;
+}
+
+.stat-box.red .stat-number {
+    color: #dc2626;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ============================================================================
+   DETAILED STATISTICS
+   ============================================================================ */
+.detailed-stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-stat-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 100px;
+    align-items: center;
+    gap: 20px;
+}
+
+.detail-stat-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.detail-stat-bar {
+    height: 24px;
+    background-color: #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.detail-stat-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10529e, #3b82f6);
+    border-radius: 12px;
+    transition: width 0.8s ease;
+}
+
+.detail-stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #10529e;
+    text-align: right;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 1400px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .player-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .player-header-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .player-photo-frame {
+        width: 200px;
+        height: 250px;
+    }
+
+    .player-info-section h1 {
+        font-size: 32px;
+    }
+
+    .player-meta-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-stat-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .detail-stat-value {
+        text-align: left;
+    }
+}

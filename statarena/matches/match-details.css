@@ -1,0 +1,507 @@
+/* ============================================================================
+   MATCH DETAILS PAGE STYLES
+   ============================================================================
+   Displays comprehensive match information for a single match.
+   Features: Match score, statistics, lineups, tabs navigation.
+   Data loaded dynamically via match-details.js from match ID in URL.
+   ============================================================================ */
+
+/* ============================================================================
+   PAGE LAYOUT & NAVIGATION
+   ============================================================================ */
+body {
+    background-color: #f5f5f5;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 80px auto 40px;
+    padding: 0 20px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #10529e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #0d4382;
+}
+
+/* ============================================================================
+   MATCH HEADER SECTION
+   ============================================================================
+   Top section showing team logos, names, scores, and match status.
+   Displays live badge for ongoing matches.
+   ============================================================================ */
+.match-header-section {
+    background: linear-gradient(135deg, #4a90e2, #5ba3f5);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(16, 82, 158, 0.2);
+}
+
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.team-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.team-logo-large {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.team-section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.match-score-section {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 40px;
+}
+
+.match-score {
+    font-size: 48px;
+    font-weight: 900;
+    color: #c6ff00;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.match-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.live-badge {
+    background-color: #ff4444;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 12px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.match-time {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================================
+   TABS NAVIGATION
+   ============================================================================
+   Tab buttons to switch between Overview, Statistics, and Lineups views.
+   Active tab has blue border and color.
+   ============================================================================ */
+.tabs-container {
+    display: flex;
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.tab-btn.active {
+    background-color: #10529e;
+    color: white;
+}
+
+/* ============================================================================
+   HALF SELECTOR (Statistics Tab)
+   ============================================================================
+   Toggle between 1st Half and 2nd Half statistics.
+   Used in the Statistics tab view.
+   ============================================================================ */
+.half-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.half-btn {
+    background-color: white;
+    border: 2px solid #10529e;
+    color: #10529e;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.half-btn:hover {
+    background-color: #f0f7ff;
+}
+
+.half-btn.active {
+    background-color: #10529e;
+    color: white;
+}
+
+/* ============================================================================
+   TAB CONTENT AREAS
+   ============================================================================
+   Content containers for each tab (Overview, Statistics, Lineups).
+   Controlled by JavaScript to show/hide based on active tab.
+   ============================================================================ */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Statistics Container */
+.stats-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-value {
+    flex: 0 0 60px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #10529e;
+}
+
+.stat-value.left {
+    text-align: right;
+}
+
+.stat-value.right {
+    text-align: left;
+}
+
+.stat-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-label {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.stat-label i {
+    color: #10529e;
+    cursor: pointer;
+}
+
+.stat-bar-container {
+    display: flex;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-bar {
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.stat-bar.left {
+    background: linear-gradient(90deg, #4a90e2, #5ba3f5);
+}
+
+.stat-bar.right {
+    background: linear-gradient(90deg, #64b5f6, #90caf9);
+    margin-left: auto;
+}
+
+.stat-bar.left.red {
+    background: linear-gradient(90deg, #ef5350, #e57373);
+}
+
+.stat-bar.right.red {
+    background: linear-gradient(90deg, #ef9a9a, #ffcdd2);
+}
+
+/* Commentary */
+.commentary-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.commentary-item {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    border-left: 3px solid #10529e;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.commentary-time {
+    flex: 0 0 50px;
+    font-weight: 700;
+    color: #10529e;
+    font-size: 16px;
+}
+
+.commentary-text {
+    flex: 1;
+    color: #333;
+    line-height: 1.6;
+}
+
+.commentary-text i {
+    color: #10529e;
+    margin-right: 5px;
+}
+
+/* Lineups - Football Pitch */
+.pitch-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pitch {
+    background: linear-gradient(180deg, #1a3a1a 0%, #2d5a2d 50%, #1a3a1a 100%);
+    position: relative;
+    width: 100%;
+    height: 700px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Pitch markings */
+.pitch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%);
+}
+
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pitch-row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.player-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-number-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #10529e;
+    border: 3px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.player-circle:hover .player-number-circle {
+    transform: scale(1.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.player-circle.away .player-number-circle {
+    background-color: #dc2626;
+}
+
+.player-name {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+}
+
+/* Standings */
+.standings-table {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.standings-table h3 {
+    color: #10529e;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.standings-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.standings-table th {
+    background-color: #10529e;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.standings-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.standings-table tr.highlighted {
+    background-color: #e3f2fd;
+}
+
+.team-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mini-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .match-teams {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .match-score {
+        font-size: 36px;
+    }
+    
+    .team-logo-large {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .lineups-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs-container {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+}

@@ -1,0 +1,304 @@
+/* ============================================================================
+   CLUBS PAGE STYLES
+   ============================================================================
+   Displays grid of football clubs.
+   Features: Club cards with logos, names, countries, leagues.
+   Links to individual club detail pages (club-details.html?id=X).
+   ============================================================================ */
+
+/* ============================================================================
+   PAGE LAYOUT
+   ============================================================================ */
+body {
+    background-color: #f5f7fa;
+    padding-top: 60px;
+}
+
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Banner */
+.hero-banner {
+    background: linear-gradient(135deg, #4c9aff, #5b8dee);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.hero-banner h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.hero-banner p {
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* Clubs Section */
+.clubs-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    color: #1a202c;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+/* ============================================================================
+   CLUB CARDS
+   ============================================================================
+   Individual club display cards in grid layout.
+   Features: Club logo, name, country, league, follow button.
+   ============================================================================ */
+.club-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.club-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Club Header */
+.club-header {
+    height: 150px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.club-logo-large {
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 20px;
+}
+
+.club-logo-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Club Body */
+.club-body {
+    padding: 100px 30px 30px;
+    margin-top: -90px;
+}
+
+.club-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.club-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a202c;
+}
+
+.club-logo-mini {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.club-stadium {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.club-info {
+    font-size: 21px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* Club Stats Row */
+.club-stats-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    padding: 15px 0;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.stat-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a202c;
+}
+
+.stat-value:contains('+') {
+    color: #10b981;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Recent Form */
+.recent-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.form-circles {
+    display: flex;
+    gap: 5px;
+}
+
+.form-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+}
+
+.form-circle.win {
+    background-color: #10b981;
+}
+
+.form-circle.draw {
+    background-color: #f59e0b;
+}
+
+.form-circle.loss {
+    background-color: #ef4444;
+}
+
+.form-record {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ef4444;
+    margin-left: auto;
+}
+
+/* Top Players */
+.top-players {
+    margin-bottom: 25px;
+}
+
+.top-players-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ef4444;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.players-list {
+    font-size: 16px;
+    color: #000000;
+}
+
+/* Club Actions */
+.club-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-view-club {
+    flex: 1;
+    padding: 12px 20px;
+    background-color: #10529e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-view-club:hover {
+    background-color: #0d4382;
+}
+
+.btn-favorite {
+    padding: 12px 20px;
+    background-color: white;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.btn-favorite:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .club-body {
+        padding: 100px 20px 20px;
+    }
+    
+    .club-actions {
+        flex-direction: column;
+    }
+    
+    .btn-view-club,
+    .btn-favorite {
+        width: 100%;
+    }
+}

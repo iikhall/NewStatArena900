@@ -1,0 +1,1188 @@
+/* ============================================================================
+   HOME PAGE STYLES - StatArena Landing Page
+   ============================================================================
+   This stylesheet contains styles specific to the home/landing page.
+   Sections: Hero banner, stats cards, featured matches, top clubs, players.
+   ============================================================================ */
+
+/* ============================================================================
+   HERO SECTION
+   ============================================================================
+   Full-screen landing banner with stadium background image.
+   Features: Gradient overlay, welcome message, call-to-action buttons.
+   ============================================================================ */
+.hero-section {
+    background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) 70%, rgba(16, 82, 158, 0.85) 95%, #10529e),
+        url('https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?q=80&w=2823&auto=format&fit=crop'); /* Stadium image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding-top: 60px; /* Offset for fixed navbar */
+    border-radius: 0 0 50px 50px; /* Rounded bottom corners */
+}
+
+/* Hero Text Elements */
+.welcome-sub {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome-sub .name {
+    color: #00b4d8; /* Light blue highlight for username */
+}
+
+.main-title {
+    font-size: 64px;
+    font-weight: 900;
+    color: #10529e; 
+    -webkit-text-stroke: 2px white; 
+    paint-order: stroke fill;
+    margin-bottom: 20px;
+    letter-spacing: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hero-description {
+    font-size: 18px;
+    max-width: 700px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+/* Hero Call-to-Action Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #10529e;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0d4382;
+}
+
+.btn-secondary {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 1px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   STATS BANNER
+   ============================================================================
+   Quick statistics cards showing site highlights.
+   Features: Clubs count, matches count, active users count.
+   ============================================================================ */
+.stats-banner {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: #f0f4f8;
+    margin-top: -50px; /* Overlap hero slightly if desired, but design shows separate */
+    position: relative;
+    z-index: 10;
+}
+
+/* Individual Stat Card */
+.stat-card {
+    background-color: #10529e;
+    color: white;
+    width: 250px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.stat-card p {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* ============================================================================
+   GENERAL SECTION CONTAINER STYLES
+   ============================================================================
+   Reusable container for all content sections below hero.
+   Used by: Featured Matches, Top Clubs, Top Players sections.
+   ============================================================================ */
+.section-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    color: #0a2540;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* ============================================================================
+   FEATURED MATCHES SECTION
+   ============================================================================
+   Displays 3 featured matches with status-based color schemes.
+   Match Types: Live (pink), Upcoming (grey), Finished (red/orange).
+   ============================================================================ */
+.matches-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Match Card Base Styles */
+.match-card {
+    width: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Match Status Colors - Different gradients for each status */
+.match-live {
+    background: linear-gradient(135deg, #b91d73, #f953c6); /* Pink/Red for LIVE matches */
+}
+
+.match-upcoming {
+    background: linear-gradient(135deg, #e0e0e0, #f5f5f5); /* Light Grey for upcoming */
+    color: #333;
+}
+
+.match-finished {
+    background: linear-gradient(135deg, #a40606, #d98324); /* Red/Orange for finished */
+}
+
+/* Match Card Header with Status Badge */
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Status Badges */
+.badge-live {
+    background-color: black;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge-time {
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge-ft {
+    background-color: black;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.match-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 30px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100px;
+}
+
+.team-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.team-name {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.score-box {
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.vs-badge {
+    background-color: #5a1818;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.btn-details {
+    width: 90%;
+    margin: 0 auto 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.2);
+    color: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: background 0.2s;
+}
+
+.match-upcoming .btn-details {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.btn-details:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+/* ============================================================================
+   TOP PERFORMERS SECTION
+   ============================================================================
+   Showcases star players with profile images and statistics.
+   Features: Club-themed backgrounds, player stats (goals, assists, matches).
+   ============================================================================ */
+.performers-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.performer-card {
+    width: 350px;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.performer-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    background-size: cover;
+    background-position: center;
+}
+
+.city-bg { background-color: #6cabdd; }
+.real-bg { background-color: #e1e1e1; }
+.bayern-bg { background-color: #dd0000; }
+
+.performer-img {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    z-index: 2;
+}
+
+.performer-info {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.performer-info h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.performer-info p {
+    font-size: 12px;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.performer-stats {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    color: white;
+    z-index: 3;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-val {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stat-label {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+/* ============================================================================
+   COMMUNITY PREDICTIONS SECTION
+   ============================================================================
+   Shows trending match predictions from the community.
+   Features: Prediction percentage bars, team colors, user vote counts.
+   ============================================================================ */
+.predictions-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.prediction-card {
+    background-color: #2563eb; /* Bright Blue */
+    color: white;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.pred-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.pred-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.pred-badge.pending { background-color: rgba(255,255,255,0.3); }
+.pred-badge.correct { background-color: #4ade80; color: #064e3b; }
+.pred-badge.incorrect { background-color: #f87171; color: #7f1d1d; }
+
+.pred-match {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.pred-pick {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.pred-confidence {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 6px;
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background-color: white;
+}
+
+/* ============================================================================
+   LEAGUE STANDINGS SECTION
+   ============================================================================
+   Mini league table showing current standings.
+   Features: Position, team logo, points, recent form.
+   ============================================================================ */
+.standings-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.standings-card {
+    background-color: white;
+    width: 450px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.standings-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.league-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.standings-header h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0a2540;
+}
+
+.standings-list {
+    list-style: none;
+}
+
+.standings-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.rank {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #10529e;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.team-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.team-info .team-name {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+}
+
+.team-info .matches-played {
+    font-size: 10px;
+    color: #888;
+}
+
+.mini-logo {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.points-info {
+    text-align: right;
+}
+
+.points {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+}
+
+.diff {
+    font-size: 10px;
+}
+
+.diff.positive { color: #10b981; }
+.diff.negative { color: #ef4444; }
+
+.btn-full-standings {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #10529e;
+    color: #10529e;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.btn-full-standings:hover {
+    background-color: #f0f9ff;
+}
+
+/* ============================================================================
+   PLAYER SPOTLIGHT SECTION
+   ============================================================================
+   Featured player profiles with detailed statistics.
+   Features: Player image, club badge, performance stats, radar chart area.
+   ============================================================================ */
+.spotlight-card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    gap: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    align-items: center;
+    text-align: left;
+}
+
+.spotlight-left {
+    flex: 1;
+    text-align: center;
+}
+
+.spotlight-img-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(to bottom right, #a855f7, #3b82f6);
+    margin: 0 auto 15px;
+}
+
+.spotlight-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+.spotlight-left h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0a2540;
+    margin-bottom: 5px;
+}
+
+.spotlight-team {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.spotlight-mini-stats {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mini-stat {
+    background-color: #f8fafc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mini-stat.active {
+    background-color: #10529e;
+    color: white;
+}
+
+.mini-stat .val {
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.mini-stat .lbl {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.spotlight-right {
+    flex: 2;
+}
+
+.spotlight-right h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a2540;
+    margin-bottom: 20px;
+}
+
+.stat-bar-group {
+    margin-bottom: 15px;
+}
+
+.stat-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.stat-bar-bg {
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background-color: #10529e;
+    border-radius: 4px;
+}
+
+.btn-full-profile {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #10529e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+/* ============================================================================
+   LIVE DASHBOARD SECTION
+   ============================================================================
+   Real-time match updates and live stats display.
+   Features: Live match cards, score updates, match status indicators.
+   ============================================================================ */
+.dashboard-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.dash-card {
+    width: 250px;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.white-card {
+    background-color: white;
+    color: #0a2540;
+}
+
+.green-card {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: white;
+}
+
+.pink-card {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+    color: white;
+}
+
+.dash-icon {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.dash-card h3 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.dash-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.dash-trend {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dash-trend.positive { color: #10b981; }
+.dash-trend.gray { color: #888; }
+
+.dash-sub {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* ============================================================================
+   CALL-TO-ACTION (CTA) SECTION
+   ============================================================================
+   Encourages user sign-up or engagement.
+   Features: Gradient background, action buttons, marketing copy.
+   ============================================================================ */
+.cta-section {
+    background-color: #f0f4f8;
+    padding: 60px 20px;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, #10529e, #1e7ac6);
+    color: white;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cta-card h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cta-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.cta-btn.primary {
+    background-color: white;
+    color: #10529e;
+}
+
+.cta-btn.primary:hover {
+    background-color: #f0f9ff;
+}
+
+.cta-btn.secondary {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.cta-btn.secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* ============================================================================
+   NEWSLETTER SIGNUP SECTION
+   ============================================================================
+   Email subscription form for match updates and news.
+   Features: Email input field, subscribe button, privacy notice.
+   ============================================================================ */
+.newsletter-section {
+    background: linear-gradient(135deg, #3b4a6b, #5a6b8c);
+    padding: 60px 20px;
+}
+
+.newsletter-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.newsletter-card h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.newsletter-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.email-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+.subscribe-btn {
+    padding: 12px 24px;
+    background-color: #10529e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.subscribe-btn:hover {
+    background-color: #0d4382;
+}
+
+/* ============================================================================
+   FOOTER SECTION
+   ============================================================================
+   Site footer with links, social media, copyright.
+   Features: Multi-column layout, social icons, legal links.
+   ============================================================================ */
+.footer {
+    background: linear-gradient(135deg, #2d3748, #4a5568);
+    color: white;
+    padding: 60px 20px 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-brand .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.footer-description {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #cbd5e0;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: transform 0.2s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon.twitter { background-color: #1da1f2; }
+.social-icon.facebook { background-color: #1877f2; }
+.social-icon.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icon.youtube { background-color: #ff0000; }
+.social-icon.whatsapp { background-color: #25d366; }
+
+.app-downloads {
+    margin-top: 20px;
+}
+
+.download-label {
+    font-size: 12px;
+    color: #cbd5e0;
+    margin-bottom: 10px;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.app-btn {
+    padding: 8px 12px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+}
+
+.app-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-stats {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-stat {
+    text-align: center;
+}
+
+.footer-stat h3 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.footer-stat p {
+    font-size: 12px;
+    color: #cbd5e0;
+}
+
+.trusted-section {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.trusted-section h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.org-badges {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.org-badge {
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #cbd5e0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #cbd5e0;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s;
+}
+
+.footer-bottom-links a:hover {
+    color: white;
+}
+
+.disclaimer {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    font-size: 11px;
+    color: #a0aec0;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}

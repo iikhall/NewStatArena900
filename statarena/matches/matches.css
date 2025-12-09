@@ -1,0 +1,241 @@
+/* ============================================================================
+   MATCHES PAGE STYLES
+   ============================================================================
+   This stylesheet contains styles for the matches listing page.
+   Features: Dynamic match cards, status badges (Live/FT/Upcoming), filters.
+   Data loaded from backend API via matches.html.
+   ============================================================================ */
+
+/* ============================================================================
+   PAGE LAYOUT
+   ============================================================================ */
+body {
+    background-color: #f5f7fa;
+    padding-top: 60px;
+}
+
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title-section {
+    margin-bottom: 20px;
+}
+
+.brand-mini {
+    color: #10529e;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* ============================================================================
+   HERO BANNER
+   ============================================================================
+   Blue gradient banner introducing the matches page.
+   ============================================================================ */
+.hero-banner {
+    background: linear-gradient(135deg, #4c9aff, #5b8dee);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.hero-banner h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.hero-banner p {
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* ============================================================================
+   MATCHES SECTION
+   ============================================================================
+   Contains all match cards grouped by status (Live, Finished, Upcoming).
+   ============================================================================ */
+.matches-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    color: #1a202c;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* ============================================================================
+   MATCH CARD/ROW STYLES
+   ============================================================================
+   Individual match display with team names, logos, scores, date/time.
+   Hover effect for better interactivity.
+   ============================================================================ */
+.match-row {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.match-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ============================================================================
+   STATUS BADGES
+   ============================================================================
+   Color-coded badges indicating match status.
+   Types: Live (red), Full Time/FT (grey), Upcoming (blue).
+   ============================================================================ */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    min-width: 50px;
+    text-align: center;
+}
+
+.live-badge {
+    background-color: #ef4444;
+    color: white;
+}
+
+.ft-badge {
+    background-color: #e5e7eb;
+    color: #6b7280;
+}
+
+.upcoming-badge {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.finished-badge {
+    background-color: #dbeafe;
+    color: #0284c7;
+}
+
+/* Team Section */
+.team-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px;
+}
+
+.team-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.team-logo-small {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* Score and Time Display */
+.score-display {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a202c;
+    min-width: 60px;
+    text-align: center;
+}
+
+.time-display {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Time Badge (minutes) */
+.time-badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 50px;
+    text-align: center;
+}
+
+.minute-badge {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+/* Buttons */
+.btn-view-details {
+    padding: 8px 16px;
+    background-color: #10529e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: auto;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-view-details:hover {
+    background-color: #0d4382;
+}
+
+.btn-predict {
+    padding: 8px 16px;
+    background-color: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-predict:hover {
+    background-color: #6d28d9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .match-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .team-section {
+        width: 100%;
+    }
+    
+    .btn-view-details,
+    .btn-predict {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,344 @@
+/* ============================================================================
+   LEAGUE TABLE PAGE STYLES
+   ============================================================================
+   Full league standings table matching website design.
+   Color zones: Champions League (green/blue), Europa (orange), Relegation (red/gray).
+   ============================================================================ */
+
+body {
+    background-color: #f0f4f8;
+    padding-top: 60px;
+}
+
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ============================================================================
+   BACK BUTTON
+   ============================================================================ */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.back-button i {
+    font-size: 16px;
+}
+
+/* ============================================================================
+   TABLE CONTAINER
+   ============================================================================ */
+.table-container {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.table-wrapper {
+    width: 100%;
+}
+
+/* ============================================================================
+   TABLE HEADER
+   ============================================================================ */
+.table-header {
+    display: grid;
+    grid-template-columns: 60px 50px 1fr 80px 80px 80px 80px 80px 80px 80px 100px 200px;
+    background-color: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 15px 20px;
+    font-weight: 700;
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-header-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.club-col {
+    justify-content: flex-start !important;
+    padding-left: 10px;
+}
+
+/* ============================================================================
+   TABLE BODY
+   ============================================================================ */
+.table-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 60px 50px 1fr 80px 80px 80px 80px 80px 80px 80px 100px 200px;
+    padding: 18px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: center;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.table-row:hover {
+    background-color: #f8fafc;
+}
+
+/* Position indicator bar */
+.table-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+/* Champions League Zone (1-4) */
+.table-row.ucl-zone::before {
+    background: linear-gradient(180deg, #10b981, #3b82f6);
+}
+
+/* Europa League Zone (5) */
+.table-row.europa-zone::before {
+    background-color: #f59e0b;
+}
+
+/* Mid-table Zone (6-7) */
+.table-row.midtable-zone::before {
+    background: linear-gradient(180deg, #a78bfa, #10b981);
+}
+
+/* Relegation Battle Zone (8-10+) */
+.table-row.relegation-zone::before {
+    background: linear-gradient(180deg, #94a3b8, #ef4444);
+}
+
+/* ============================================================================
+   TABLE CELLS
+   ============================================================================ */
+.table-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* Rank Cell */
+.rank-cell {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rank Colors */
+.rank-1 { background: linear-gradient(135deg, #10b981, #059669); }
+.rank-2 { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.rank-3 { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.rank-4 { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+.rank-5 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.rank-6 { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+.rank-7 { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
+.rank-8 { background: linear-gradient(135deg, #94a3b8, #64748b); }
+.rank-9 { background: linear-gradient(135deg, #94a3b8, #64748b); }
+.rank-10 { background: linear-gradient(135deg, #94a3b8, #475569); }
+
+/* Club Logo Cell */
+.logo-cell {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a202c;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.logo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Club Info Cell */
+.club-info-cell {
+    justify-content: flex-start !important;
+    padding-left: 15px;
+    flex: 1;
+}
+
+.club-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 2px;
+}
+
+.club-city {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+/* Stats Cells */
+.stat-cell {
+    font-size: 15px;
+    font-weight: 600;
+    color: #475569;
+}
+
+/* Wins - Green */
+.stat-cell.wins {
+    color: #10b981;
+    font-weight: 700;
+}
+
+/* Draws - Orange */
+.stat-cell.draws {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+/* Losses - Red */
+.stat-cell.losses {
+    color: #ef4444;
+    font-weight: 700;
+}
+
+/* Goal Difference */
+.stat-cell.gd {
+    font-weight: 700;
+}
+
+.stat-cell.gd.positive {
+    color: #10b981;
+}
+
+.stat-cell.gd.negative {
+    color: #ef4444;
+}
+
+/* Points Cell */
+.pts-cell {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a202c;
+}
+
+/* Form Cell */
+.form-cell {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.form-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: white;
+}
+
+.form-badge.win {
+    background-color: #10b981;
+}
+
+.form-badge.draw {
+    background-color: #f59e0b;
+}
+
+.form-badge.loss {
+    background-color: #ef4444;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 1200px) {
+    .table-header,
+    .table-row {
+        grid-template-columns: 50px 45px 1fr 70px 70px 70px 70px 70px 70px 70px 90px 180px;
+        font-size: 13px;
+    }
+
+    .table-header {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 968px) {
+    .table-header,
+    .table-row {
+        grid-template-columns: 45px 40px 1fr 60px 60px 60px 60px 60px 60px 60px 80px 150px;
+    }
+
+    .club-name {
+        font-size: 14px;
+    }
+
+    .form-badge {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-header,
+    .table-row {
+        grid-template-columns: 40px 35px 1fr 50px 50px 50px 80px 120px;
+    }
+
+    /* Hide some columns on mobile */
+    .table-header-cell:nth-child(4),
+    .table-header-cell:nth-child(5),
+    .table-header-cell:nth-child(6),
+    .table-header-cell:nth-child(7),
+    .table-header-cell:nth-child(8),
+    .table-cell:nth-child(4),
+    .table-cell:nth-child(5),
+    .table-cell:nth-child(6),
+    .table-cell:nth-child(7),
+    .table-cell:nth-child(8) {
+        display: none;
+    }
+
+    .club-city {
+        display: none;
+    }
+}

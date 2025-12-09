@@ -1,0 +1,365 @@
+/* ===========================================
+   CLUB DETAILS PAGE STYLING
+   Dynamic theming based on selected club
+   Colors change via CSS variables in JavaScript
+   =========================================== */
+
+/* CSS Variables - These change dynamically based on selected club */
+:root {
+    --club-primary: #4285f4;      /* Main club color (e.g., Bayern red, City blue) */
+    --club-secondary: #1a73e8;    /* Secondary club color */
+    --club-accent: #0d47a1;       /* Accent color for highlights */
+}
+
+/* ===========================================
+   BACK BUTTON
+   =========================================== */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px);  /* Slide effect on hover */
+}
+
+/* ===========================================
+   CLUB HERO SECTION
+   Large banner with club logo and info
+   Uses dynamic club colors
+   =========================================== */
+.club-hero {
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.club-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.03)"/></svg>');
+    opacity: 0.5;
+}
+
+.club-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.club-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.club-hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 1.1rem;
+}
+
+.club-hero-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===========================================
+   SECTION CONTAINERS
+   Reusable containers for different sections
+   =========================================== */
+.section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.section-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* ===========================================
+   LEGACY SECTION
+   Shows club history (founded year, league)
+   =========================================== */
+.legacy-badges {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.legacy-badge {
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+    padding: 20px 30px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 150px;
+}
+
+.legacy-badge i {
+    font-size: 1.8rem;
+}
+
+.badge-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.badge-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.legacy-description {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ===========================================
+   SQUAD ROSTER TABLE
+   Displays full team with player details
+   Headers use club colors dynamically
+   =========================================== */
+.squad-table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+.squad-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.squad-table thead {
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+}
+
+.squad-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.squad-table th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.squad-table th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.squad-table tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+.squad-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(1.01);
+}
+
+.squad-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.player-number {
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.rating-badge {
+    background: linear-gradient(135deg, #dc143c, #8b0000);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* ===========================================
+   TICKET BOOKING SECTION
+   Call-to-action for match tickets
+   Full-width section with club colors
+   =========================================== */
+.ticket-section {
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+    text-align: center;
+}
+
+.ticket-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.ticket-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.ticket-button {
+    background: white;
+    color: var(--club-primary);
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ticket-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.ticket-features span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+/* ===========================================
+   CLUB ACHIEVEMENTS
+   Trophy count display (League, Champions League, etc.)
+   Cards use club colors
+   =========================================== */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.achievement-card {
+    background: linear-gradient(135deg, var(--club-primary), var(--club-secondary));
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-card i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.achievement-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.achievement-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+   Mobile and tablet optimizations
+   =========================================== */
+@media (max-width: 768px) {
+    .hero-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .club-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .club-hero-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .section {
+        padding: 25px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .squad-table {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Player Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="player-details.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right" id="navbarRight">
+            <!-- Dynamic content loaded by auth-check.js -->
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Back Button -->
+        <a href="players.html" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i> Back to Players
+        </a>
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb" id="breadcrumb">
+            <span>Players Database</span>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span id="breadcrumb-league">Loading...</span>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span id="breadcrumb-club">Loading...</span>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span id="breadcrumb-player">Loading...</span>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            
+            <!-- Left Sidebar -->
+            <aside class="left-sidebar">
+                <div class="sidebar-card">
+                    <h3><i class="fa-solid fa-clock"></i> Match History</h3>
+                    <div class="match-history-list" id="matchHistory">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Content -->
+            <main class="main-content">
+                
+                <!-- Player Header Card -->
+                <div class="player-header-card">
+                    <div class="player-photo-section">
+                        <div class="player-photo-frame">
+                            <img id="playerPhoto" src="" alt="Player Photo">
+                        </div>
+                    </div>
+                    
+                    <div class="player-info-section">
+                        <h1 id="playerName">Loading...</h1>
+                        
+                        <div class="player-meta-grid">
+                            <div class="meta-item">
+                                <span class="meta-label">DATE OF BIRTH</span>
+                                <span class="meta-value" id="playerDOB">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">POSITION</span>
+                                <span class="meta-value" id="playerPosition">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">PLACE OF BIRTH</span>
+                                <span class="meta-value" id="playerPOB">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">MANAGER</span>
+                                <span class="meta-value" id="playerManager">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">HEIGHT</span>
+                                <span class="meta-value" id="playerHeight">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">FOOT</span>
+                                <span class="meta-value" id="playerFoot">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">NATIONALITY</span>
+                                <span class="meta-value" id="playerNationality">-</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">JERSEY NUMBER</span>
+                                <span class="meta-value" id="playerJersey">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Value Section -->
+                <div class="section-card">
+                    <h2><i class="fa-solid fa-chart-line"></i> Market Value (mln €)</h2>
+                    <div class="market-value-chart">
+                        <canvas id="marketValueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Performance Stats -->
+                <div class="section-card">
+                    <h2><i class="fa-solid fa-chart-bar"></i> Season Performance</h2>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <i class="fa-solid fa-futbol stat-icon"></i>
+                            <div class="stat-number" id="statGoals">0</div>
+                            <div class="stat-label">Goals</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fa-solid fa-hands-helping stat-icon"></i>
+                            <div class="stat-number" id="statAssists">0</div>
+                            <div class="stat-label">Assists</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fa-solid fa-calendar-check stat-icon"></i>
+                            <div class="stat-number" id="statMatches">0</div>
+                            <div class="stat-label">Matches</div>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fa-solid fa-clock stat-icon"></i>
+                            <div class="stat-number" id="statMinutes">0</div>
+                            <div class="stat-label">Minutes</div>
+                        </div>
+                        <div class="stat-box yellow">
+                            <i class="fa-solid fa-square stat-icon"></i>
+                            <div class="stat-number" id="statYellowCards">0</div>
+                            <div class="stat-label">Yellow Cards</div>
+                        </div>
+                        <div class="stat-box red">
+                            <i class="fa-solid fa-square stat-icon"></i>
+                            <div class="stat-number" id="statRedCards">0</div>
+                            <div class="stat-label">Red Cards</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Statistics -->
+                <div class="section-card">
+                    <h2><i class="fa-solid fa-list-check"></i> Detailed Statistics</h2>
+                    <div class="detailed-stats-grid">
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Pass Accuracy</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="passAccuracyBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="passAccuracyValue">0%</span>
+                        </div>
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Shots on Target</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="shotsBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="shotsValue">0</span>
+                        </div>
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Dribbles Completed</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="dribblesBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="dribblesValue">0</span>
+                        </div>
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Tackles Won</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="tacklesBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="tacklesValue">0</span>
+                        </div>
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Interceptions</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="interceptionsBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="interceptionsValue">0</span>
+                        </div>
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Aerial Duels Won</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="aerialsBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="aerialsValue">0</span>
+                        </div>
+                        <div class="detail-stat-row">
+                            <span class="detail-stat-label">Penalties Scored</span>
+                            <div class="detail-stat-bar">
+                                <div class="detail-stat-fill" id="penaltiesBar"></div>
+                            </div>
+                            <span class="detail-stat-value" id="penaltiesValue">0/0</span>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="right-sidebar">
+                
+                <!-- International Stats -->
+                <div class="sidebar-card">
+                    <h3>International</h3>
+                    <div class="int-stats">
+                        <div class="int-stat-row">
+                            <span>INT. MATCHES</span>
+                            <strong id="intMatches">0</strong>
+                        </div>
+                        <div class="int-stat-row">
+                            <span>INT. GOALS</span>
+                            <strong id="intGoals">0</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club Info -->
+                <div class="sidebar-card club-info-card" id="clubInfoCard">
+                    <img id="clubLogo" src="" alt="Club">
+                    <h3 id="clubName">Club Name</h3>
+                    <p id="clubLeague">League</p>
+                </div>
+
+                <!-- Goals This Season Chart -->
+                <div class="sidebar-card">
+                    <h3>Goals in Current Season</h3>
+                    <div class="goals-chart">
+                        <canvas id="goalsChart"></canvas>
+                    </div>
+                    <div class="goals-breakdown" id="goalsBreakdown">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="player-details.js"></script>
+</body>
+</html>

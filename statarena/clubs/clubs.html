@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Clubs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="clubs.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <h1>Clubs</h1>
+            <p>Explore club profiles, statistics, and squad information</p>
+        </div>
+
+        <!-- Clubs Section Title -->
+        <!-- <section class="clubs-section">
+            <h2 class="section-title">Premier League Clubs</h2> -->
+
+            <!-- Club Card 1 - Bayern Munich -->
+            <div class="club-card">
+                <div class="club-header" style="background: linear-gradient(135deg, #dc143c, #0057b8);">
+                    <div class="club-logo-large">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Bayern Munich">
+                    </div>
+                </div>
+                <div class="club-body">
+                    <div class="club-title-row">
+                        <h3 class="club-name">Bayern Munich</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Bayern" class="club-logo-mini">
+                    </div>
+                    <p class="club-stadium">Allianz Arena • 70,000 capacity</p>
+                    <p class="club-info">Founded 1900 • Market Value: €1.1B</p>
+                    
+                    <div class="club-stats-row">
+                        <div class="stat-item">
+                            <span class="stat-value">91</span>
+                            <span class="stat-label">Points</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">85</span>
+                            <span class="stat-label">Goals</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">+63</span>
+                            <span class="stat-label">GD</span>
+                        </div>
+                    </div>
+
+                    <div class="recent-form">
+                        <span class="form-label">Recent Form</span>
+                        <div class="form-circles">
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                        </div>
+                        <span class="form-record">30W 3D 1L</span>
+                    </div>
+
+                    <div class="top-players">
+                        <span class="top-players-label">Top Players</span>
+                        <p class="players-list">Jamal Musiala • Joshua Kimmich • Thomas Müller</p>
+                    </div>
+
+                    <div class="club-actions">
+                        <a href="club-details.html?id=1" class="btn-view-club">
+                            <i class="fa-solid fa-circle-info"></i> View Details
+                        </a>
+                        <button class="btn-favorite" data-club-name="Bayern Munich" onclick="toggleFavoriteClub('Bayern Munich'); updateFavoriteIcons();">
+                            <i class="fa-regular fa-heart favorite-icon"></i> 317K
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Club Card 2 - Manchester City -->
+            <div class="club-card">
+                <div class="club-header" style="background: linear-gradient(135deg, #6cabdd, #1c2c5b);">
+                    <div class="club-logo-large">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Manchester City">
+                    </div>
+                </div>
+                <div class="club-body">
+                    <div class="club-title-row">
+                        <h3 class="club-name">Manchester City</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City" class="club-logo-mini">
+                    </div>
+                    <p class="club-stadium">Etihad Stadium • 60,000 capacity</p>
+                    <p class="club-info">Founded 1880 • Market Value: €1.2B</p>
+                    
+                    <div class="club-stats-row">
+                        <div class="stat-item">
+                            <span class="stat-value">89</span>
+                            <span class="stat-label">Points</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">71</span>
+                            <span class="stat-label">Goals</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">+41</span>
+                            <span class="stat-label">GD</span>
+                        </div>
+                    </div>
+
+                    <div class="recent-form">
+                        <span class="form-label">Recent Form</span>
+                        <div class="form-circles">
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle draw">D</span>
+                            <span class="form-circle win">W</span>
+                        </div>
+                        <span class="form-record">28W 4D 3L</span>
+                    </div>
+
+                    <div class="top-players">
+                        <span class="top-players-label">Top Players</span>
+                        <p class="players-list">Erling Haaland • Kevin De Bruyne • Rodri</p>
+                    </div>
+
+                    <div class="club-actions">
+                        <a href="club-details.html?id=2" class="btn-view-club">
+                            <i class="fa-solid fa-circle-info"></i> View Details
+                        </a>
+                        <button class="btn-favorite" data-club-name="Manchester City" onclick="toggleFavoriteClub('Manchester City'); updateFavoriteIcons();">
+                            <i class="fa-regular fa-heart favorite-icon"></i> 281K
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Club Card 3 - Real Madrid -->
+            <div class="club-card">
+                <div class="club-header" style="background: linear-gradient(135deg, #fdb913, #0057b8);">
+                    <div class="club-logo-large">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid">
+                    </div>
+                </div>
+                <div class="club-body">
+                    <div class="club-title-row">
+                        <h3 class="club-name">Real Madrid</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid" class="club-logo-mini">
+                    </div>
+                    <p class="club-stadium">Santiago Bernabéu • 90,000 capacity</p>
+                    <p class="club-info">Founded 1902 • Market Value: €1.5B</p>
+                    
+                    <div class="club-stats-row">
+                        <div class="stat-item">
+                            <span class="stat-value">88</span>
+                            <span class="stat-label">Points</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">75</span>
+                            <span class="stat-label">Goals</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">+50</span>
+                            <span class="stat-label">GD</span>
+                        </div>
+                    </div>
+
+                    <div class="recent-form">
+                        <span class="form-label">Recent Form</span>
+                        <div class="form-circles">
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle win">W</span>
+                            <span class="form-circle loss">L</span>
+                        </div>
+                        <span class="form-record">28W 5D 2L</span>
+                    </div>
+
+                    <div class="top-players">
+                        <span class="top-players-label">Top Players</span>
+                        <p class="players-list">Karim Benzema • Vinícius Jr. • Luka Modrić</p>
+                    </div>
+
+                    <div class="club-actions">
+                        <a href="club-details.html?id=3" class="btn-view-club">
+                            <i class="fa-solid fa-circle-info"></i> View Details
+                        </a>
+                        <button class="btn-favorite" data-club-name="Real Madrid" onclick="toggleFavoriteClub('Real Madrid'); updateFavoriteIcons();">
+                            <i class="fa-regular fa-heart favorite-icon"></i> 368K
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="../assets/js/favorites.js"></script>
+</body>
+</html>

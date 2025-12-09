@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Diagnostic Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #10529e;
+            text-align: center;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .test-card {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #3d3d3d;
+        }
+        .test-card h2 {
+            color: #10529e;
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #2d5016;
+            color: #8bc34a;
+        }
+        .status.error {
+            background: #5c1a1a;
+            color: #ff5252;
+        }
+        .status.pending {
+            background: #4a4a2d;
+            color: #ffeb3b;
+        }
+        pre {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        button {
+            background: #10529e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #0d4280;
+        }
+        button:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        .console-output {
+            background: #000;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        .console-output .log { color: #888; }
+        .console-output .error { color: #ff5252; }
+        .console-output .success { color: #8bc34a; }
+        .summary {
+            background: #2d2d2d;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #10529e;
+        }
+        .summary h2 {
+            margin-top: 0;
+            color: #10529e;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .summary-item {
+            text-align: center;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        .summary-item .label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        .summary-item .value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 StatArena Complete Diagnostic Test</h1>
+        
+        <div class="summary">
+            <h2>Test Summary</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="label">Tests Passed</div>
+                    <div class="value" style="color: #8bc34a;" id="passedCount">0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">Tests Failed</div>
+                    <div class="value" style="color: #ff5252;" id="failedCount">0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">Total Tests</div>
+                    <div class="value" style="color: #10529e;" id="totalCount">6</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">Success Rate</div>
+                    <div class="value" style="color: #ffeb3b;" id="successRate">0%</div>
+                </div>
+            </div>
+            <button onclick="runAllTests()" style="width: 100%; margin-top: 15px; padding: 15px; font-size: 16px;">
+                🚀 Run All Tests
+            </button>
+        </div>
+
+        <div class="test-grid">
+            <!-- Test 1: API Client -->
+            <div class="test-card">
+                <h2>1️⃣ API Client Loading</h2>
+                <div id="test1Status" class="status pending">⏳ Not Run</div>
+                <button onclick="test1()">Run Test</button>
+                <div id="test1Output" class="console-output"></div>
+            </div>
+
+            <!-- Test 2: Backend Connection -->
+            <div class="test-card">
+                <h2>2️⃣ Backend Server Health</h2>
+                <div id="test2Status" class="status pending">⏳ Not Run</div>
+                <button onclick="test2()">Run Test</button>
+                <div id="test2Output" class="console-output"></div>
+            </div>
+
+            <!-- Test 3: Matches API -->
+            <div class="test-card">
+                <h2>3️⃣ Matches Endpoint</h2>
+                <div id="test3Status" class="status pending">⏳ Not Run</div>
+                <button onclick="test3()">Run Test</button>
+                <div id="test3Output" class="console-output"></div>
+            </div>
+
+            <!-- Test 4: Players API -->
+            <div class="test-card">
+                <h2>4️⃣ Players Endpoint</h2>
+                <div id="test4Status" class="status pending">⏳ Not Run</div>
+                <button onclick="test4()">Run Test</button>
+                <div id="test4Output" class="console-output"></div>
+            </div>
+
+            <!-- Test 5: Clubs/Standings API -->
+            <div class="test-card">
+                <h2>5️⃣ League Standings</h2>
+                <div id="test5Status" class="status pending">⏳ Not Run</div>
+                <button onclick="test5()">Run Test</button>
+                <div id="test5Output" class="console-output"></div>
+            </div>
+
+            <!-- Test 6: Leagues API -->
+            <div class="test-card">
+                <h2>6️⃣ Leagues Endpoint</h2>
+                <div id="test6Status" class="status pending">⏳ Not Run</div>
+                <button onclick="test6()">Run Test</button>
+                <div id="test6Output" class="console-output"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/api-client.js"></script>
+    <script>
+        let passed = 0, failed = 0;
+
+        function updateSummary() {
+            document.getElementById('passedCount').textContent = passed;
+            document.getElementById('failedCount').textContent = failed;
+            const total = passed + failed;
+            const rate = total > 0 ? Math.round((passed / total) * 100) : 0;
+            document.getElementById('successRate').textContent = rate + '%';
+        }
+
+        function log(testId, message, type = 'log') {
+            const output = document.getElementById(`test${testId}Output`);
+            const line = document.createElement('div');
+            line.className = type;
+            line.textContent = '> ' + message;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function setStatus(testId, status, message) {
+            const statusEl = document.getElementById(`test${testId}Status`);
+            statusEl.className = `status ${status}`;
+            statusEl.textContent = message;
+            
+            if (status === 'success') passed++;
+            if (status === 'error') failed++;
+            updateSummary();
+        }
+
+        // Test 1: API Client
+        async function test1() {
+            const output = document.getElementById('test1Output');
+            output.innerHTML = '';
+            log(1, 'Checking if API client is loaded...');
+            
+            try {
+                if (typeof api === 'undefined') {
+                    throw new Error('api object not found');
+                }
+                log(1, '✅ API client exists', 'success');
+                log(1, 'Base URL: ' + api.baseURL, 'success');
+                log(1, 'Available methods: ' + Object.getOwnPropertyNames(Object.getPrototypeOf(api)).filter(m => m !== 'constructor').length);
+                setStatus(1, 'success', '✅ Passed');
+            } catch (error) {
+                log(1, '❌ Error: ' + error.message, 'error');
+                setStatus(1, 'error', '❌ Failed');
+            }
+        }
+
+        // Test 2: Backend Health
+        async function test2() {
+            const output = document.getElementById('test2Output');
+            output.innerHTML = '';
+            log(2, 'Testing backend server connection...');
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/health');
+                const data = await response.json();
+                log(2, '✅ Server is running', 'success');
+                log(2, 'Status: ' + data.status, 'success');
+                log(2, 'Message: ' + data.message, 'success');
+                setStatus(2, 'success', '✅ Passed');
+            } catch (error) {
+                log(2, '❌ Error: ' + error.message, 'error');
+                log(2, '❌ Make sure backend server is running on port 3000', 'error');
+                setStatus(2, 'error', '❌ Failed');
+            }
+        }
+
+        // Test 3: Matches
+        async function test3() {
+            const output = document.getElementById('test3Output');
+            output.innerHTML = '';
+            log(3, 'Fetching matches from API...');
+            
+            try {
+                const matches = await api.getAllMatches();
+                log(3, '✅ Matches loaded: ' + matches.length + ' total', 'success');
+                
+                const live = matches.filter(m => m.status === 'LIVE').length;
+                const upcoming = matches.filter(m => m.status === 'Upcoming').length;
+                const finished = matches.filter(m => m.status === 'Finished').length;
+                
+                log(3, 'Live: ' + live + ', Upcoming: ' + upcoming + ', Finished: ' + finished);
+                
+                if (matches.length > 0) {
+                    log(3, 'Sample match: ' + matches[0].home_team + ' vs ' + matches[0].away_team);
+                }
+                
+                setStatus(3, 'success', '✅ Passed');
+            } catch (error) {
+                log(3, '❌ Error: ' + error.message, 'error');
+                setStatus(3, 'error', '❌ Failed');
+            }
+        }
+
+        // Test 4: Players
+        async function test4() {
+            const output = document.getElementById('test4Output');
+            output.innerHTML = '';
+            log(4, 'Fetching players from API...');
+            
+            try {
+                const players = await api.getAllPlayers();
+                log(4, '✅ Players loaded: ' + players.length + ' total', 'success');
+                
+                if (players.length > 0) {
+                    log(4, 'Sample player: ' + players[0].name + ' (' + players[0].position + ')');
+                    log(4, 'Has photo_url: ' + (players[0].photo_url ? 'Yes' : 'No'));
+                    log(4, 'Has statistics: matches=' + (players[0].matches_played || 'N/A'));
+                }
+                
+                setStatus(4, 'success', '✅ Passed');
+            } catch (error) {
+                log(4, '❌ Error: ' + error.message, 'error');
+                setStatus(4, 'error', '❌ Failed');
+            }
+        }
+
+        // Test 5: Standings
+        async function test5() {
+            const output = document.getElementById('test5Output');
+            output.innerHTML = '';
+            log(5, 'Fetching league standings (League ID: 1)...');
+            
+            try {
+                const standings = await api.getLeagueStandings(1);
+                log(5, '✅ Standings loaded: ' + standings.length + ' teams', 'success');
+                
+                if (standings.length > 0) {
+                    log(5, 'Top team: ' + standings[0].name + ' (' + standings[0].points + ' pts)');
+                    log(5, 'Has form data: ' + (standings[0].form ? 'Yes' : 'No'));
+                }
+                
+                setStatus(5, 'success', '✅ Passed');
+            } catch (error) {
+                log(5, '❌ Error: ' + error.message, 'error');
+                setStatus(5, 'error', '❌ Failed');
+            }
+        }
+
+        // Test 6: Leagues
+        async function test6() {
+            const output = document.getElementById('test6Output');
+            output.innerHTML = '';
+            log(6, 'Fetching leagues from API...');
+            
+            try {
+                const leagues = await api.getAllLeagues();
+                log(6, '✅ Leagues loaded: ' + leagues.length + ' total', 'success');
+                
+                leagues.forEach(league => {
+                    log(6, '- ' + league.name + ' (ID: ' + league.league_id + ')');
+                });
+                
+                setStatus(6, 'success', '✅ Passed');
+            } catch (error) {
+                log(6, '❌ Error: ' + error.message, 'error');
+                setStatus(6, 'error', '❌ Failed');
+            }
+        }
+
+        async function runAllTests() {
+            passed = 0;
+            failed = 0;
+            updateSummary();
+            
+            await test1();
+            await new Promise(r => setTimeout(r, 500));
+            await test2();
+            await new Promise(r => setTimeout(r, 500));
+            await test3();
+            await new Promise(r => setTimeout(r, 500));
+            await test4();
+            await new Promise(r => setTimeout(r, 500));
+            await test5();
+            await new Promise(r => setTimeout(r, 500));
+            await test6();
+        }
+
+        // Auto-run on load
+        window.onload = function() {
+            log(1, 'Page loaded, ready to test');
+            log(2, 'Backend should be running on http://localhost:3000');
+            log(3, 'Endpoint: GET /api/matches');
+            log(4, 'Endpoint: GET /api/players');
+            log(5, 'Endpoint: GET /api/clubs/standings/:league_id');
+            log(6, 'Endpoint: GET /api/leagues');
+        };
+    </script>
+</body>
+</html>

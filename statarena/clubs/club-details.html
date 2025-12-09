@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Details - StatArena</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="club-details.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <a href="clubs.html" class="back-button">
+            <i class="fa-solid fa-arrow-left"></i> Back to Clubs
+        </a>
+
+        <!-- Club Hero Section -->
+        <div class="club-hero" id="clubHero">
+            <div class="club-hero-content">
+                <img id="clubLogo" src="" alt="Club Logo" class="hero-logo">
+                <h1 id="clubName">Loading...</h1>
+                <div class="club-hero-info">
+                    <span id="clubStadium"><i class="fa-solid fa-location-dot"></i> Stadium</span>
+                    <span id="clubCapacity"><i class="fa-solid fa-users"></i> Capacity: 0</span>
+                    <span id="clubValue"><i class="fa-solid fa-euro-sign"></i> Market Value: €0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy Section -->
+        <section class="section">
+            <div class="section-icon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 class="section-title">Our Legacy</h2>
+            <div class="legacy-badges">
+                <div class="legacy-badge">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span class="badge-label">Founded</span>
+                    <span class="badge-value" id="clubFounded">1900</span>
+                </div>
+                <div class="legacy-badge">
+                    <i class="fa-solid fa-shield"></i>
+                    <span class="badge-label">League</span>
+                    <span class="badge-value" id="clubLeague">Bundesliga</span>
+                </div>
+            </div>
+            <p class="legacy-description" id="legacyText">
+                This club stands as one of the most prestigious and successful football clubs in the world. 
+                With a rich history spanning over a century, the club has consistently demonstrated excellence 
+                both domestically and on the European stage, becoming a symbol of footballing supremacy.
+            </p>
+        </section>
+
+        <!-- Full Squad Roster -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h2 class="section-title">Full Squad Roster</h2>
+            </div>
+            <div class="squad-table-container">
+                <table class="squad-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Player Name</th>
+                            <th>Position</th>
+                            <th>Age</th>
+                            <th>Nationality</th>
+                            <th>Rating</th>
+                            <th>Market Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="squadTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 20px;">Loading squad...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Ticket Booking Section -->
+        <section class="section ticket-section" id="ticketSection">
+            <div class="ticket-content">
+                <h2>Experience the Match Live!</h2>
+                <p id="ticketDescription">Don't miss the electric atmosphere. Secure your seats today and witness world-class football excellence.</p>
+                <button class="ticket-button">
+                    <i class="fa-solid fa-calendar-check"></i> View Upcoming Matches & Book
+                </button>
+                <div class="ticket-features">
+                    <span><i class="fa-solid fa-shield"></i> Secure Booking</span>
+                    <span><i class="fa-solid fa-mobile"></i> Mobile Tickets</span>
+                    <span><i class="fa-solid fa-star"></i> Best Seats Available</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Club Achievements -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h2 class="section-title">Club Achievements</h2>
+            </div>
+            <div class="achievements-grid" id="achievementsGrid">
+                <div class="achievement-card">
+                    <i class="fa-solid fa-trophy"></i>
+                    <div class="achievement-number" id="leagueTitles">0</div>
+                    <div class="achievement-label">League Titles</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="../assets/js/favorites.js"></script>
+    <script src="club-details.js"></script>
+</body>
+</html>

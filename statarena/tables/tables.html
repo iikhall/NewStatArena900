@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Leagues & Tables</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="tables.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <i class="fa-solid fa-trophy banner-icon"></i>
+            <h1>Leagues & Tables</h1>
+            <p>Explore league standings, statistics, and current season performance across major European leagues</p>
+        </div>
+
+        <!-- Leagues Grid -->
+        <div class="leagues-grid">
+            <!-- Premier League Card -->
+            <a href="league-table.html?id=1" class="league-card premier-league" style="text-decoration: none; color: inherit;">
+                <div class="league-pattern"></div>
+                <div class="league-content">
+                    <div class="league-logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="Premier League" class="league-logo">
+                    </div>
+                    <h3 class="league-name">Premier League</h3>
+                    <p class="league-country">England</p>
+                    <div class="league-info">
+                        <div class="info-item">
+                            <span class="info-label">Teams:</span>
+                            <span class="info-value">20</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Season:</span>
+                            <span class="info-value">2023/24</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- La Liga Card -->
+            <a href="league-table.html?id=2" class="league-card la-liga" style="text-decoration: none; color: inherit;">
+                <div class="league-pattern"></div>
+                <div class="league-content">
+                    <div class="league-logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/1200px-LaLiga_logo_2023.svg.png" alt="La Liga" class="league-logo">
+                    </div>
+                    <h3 class="league-name">La Liga</h3>
+                    <p class="league-country">Spain</p>
+                    <div class="league-info">
+                        <div class="info-item">
+                            <span class="info-label">Teams:</span>
+                            <span class="info-value">20</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Season:</span>
+                            <span class="info-value">2023/24</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Serie A Card -->
+            <a href="league-table.html?id=3" class="league-card serie-a" style="text-decoration: none; color: inherit;">
+                <div class="league-pattern"></div>
+                <div class="league-content">
+                    <div class="league-logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_Serie_A_%282024%29.svg/440px-Logo_Serie_A_%282024%29.svg.png" alt="Serie A" class="league-logo">
+                    </div>
+                    <h3 class="league-name">Serie A</h3>
+                    <p class="league-country">Italy</p>
+                    <div class="league-info">
+                        <div class="info-item">
+                            <span class="info-label">Teams:</span>
+                            <span class="info-value">20</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Season:</span>
+                            <span class="info-value">2023/24</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Bundesliga Card -->
+            <a href="league-table.html?id=4" class="league-card bundesliga" style="text-decoration: none; color: inherit;">
+                <div class="league-pattern"></div>
+                <div class="league-content">
+                    <div class="league-logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/440px-Bundesliga_logo_%282017%29.svg.png" alt="Bundesliga" class="league-logo">
+                    </div>
+                    <h3 class="league-name">Bundesliga</h3>
+                    <p class="league-country">Germany</p>
+                    <div class="league-info">
+                        <div class="info-item">
+                            <span class="info-label">Teams:</span>
+                            <span class="info-value">20</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Season:</span>
+                            <span class="info-value">2023/24</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Ligue 1 Card -->
+            <a href="league-table.html?id=5" class="league-card ligue1" style="text-decoration: none; color: inherit;">
+                <div class="league-pattern"></div>
+                <div class="league-content">
+                    <div class="league-logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ligue_1_Uber_Eats.svg/440px-Ligue_1_Uber_Eats.svg.png" alt="Ligue 1" class="league-logo">
+                    </div>
+                    <h3 class="league-name">Ligue 1</h3>
+                    <p class="league-country">France</p>
+                    <div class="league-info">
+                        <div class="info-item">
+                            <span class="info-label">Teams:</span>
+                            <span class="info-value">20</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Season:</span>
+                            <span class="info-value">2023/24</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+</body>
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- <div class="welcome-sub">
+            Welcome back, <span class="name">Khaled!</span> 👋
+        </div> -->
+        <h1 class="main-title">StatArena</h1>
+        <p class="hero-description">
+            Get real-time statistics, match analysis, make predictions, and book tickets for your favorite teams. Everything you need for the beautiful game in one place.
+        </p>
+        <div class="hero-buttons">
+            <a href="../tickets/tickets.html" class="btn btn-primary">
+                <i class="fa-solid fa-ticket"></i> Book Match Tickets
+            </a>
+            <a href="../predictions/predictions.html" class="btn btn-secondary">
+                <i class="fa-solid fa-chart-line"></i> Start Predicting
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+        <div class="stat-card">
+            <h3>250+</h3>
+            <p>Active Matches</p>
+        </div>
+        <div class="stat-card">
+            <h3>500+</h3>
+            <p>Players Tracked</p>
+        </div>
+        <div class="stat-card">
+            <h3>50+</h3>
+            <p>Teams & Clubs</p>
+        </div>
+        <div class="stat-card">
+            <h3>10k+</h3>
+            <p>Active Users</p>
+        </div>
+    </section>
+
+    <!-- Featured Matches -->
+    <section class="section-container">
+        <h2 class="section-title">Featured Matches</h2>
+        <div class="matches-grid">
+            <!-- Match 1 -->
+            <div class="match-card match-live">
+                <div class="match-header">
+                    <span class="badge-live">LIVE 67'</span>
+                    <span class="league-name">Premier League</span>
+                </div>
+                <div class="match-content">
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City" class="team-logo">
+                        <span class="team-name">Manchester City</span>
+                    </div>
+                    <div class="score-box">
+                        <span class="score">2</span>
+                        <span class="divider">-</span>
+                        <span class="score">1</span>
+                    </div>
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" alt="Liverpool" class="team-logo">
+                            <span class="team-name">Liverpool</span>
+                    </div>
+                </div>
+                <button class="btn-details">View Details</button>
+            </div>
+            <!-- Match 2 -->
+            <div class="match-card match-upcoming">
+                <div class="match-header">
+                    <span class="badge-time">15:00</span>
+                    <span class="league-name">La Liga</span>
+                </div>
+                <div class="match-content">
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid" class="team-logo">
+                        <span class="team-name">Real Madrid</span>
+                    </div>
+                    <div class="vs-badge">VS</div>
+                    <div class="team">
+                      
+                        <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona" class="team-logo">
+                          <span class="team-name">Barcelona</span>
+
+                    </div>
+                </div>
+                <button class="btn-details">View Details</button>
+            </div>
+
+            <!-- Match 3 -->
+            <div class="match-card match-finished">
+                <div class="match-header">
+                    <span class="badge-ft">FT</span>
+                    <span class="league-name">Bundesliga</span>
+                </div>
+                <div class="match-content">
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Bayern" class="team-logo">
+                        <span class="team-name">Bayern Munich</span>
+                    </div>
+                    <div class="score-box">
+                        <span class="score">3</span>
+                        <span class="divider">-</span>
+                        <span class="score">2</span>
+                    </div>
+                    <div class="team">
+                        
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg" alt="Dortmund" class="team-logo">
+                        <span class="team-name">Borussia Dortmund</span>
+                    </div>
+                </div>
+                <button class="btn-details">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Performers -->
+    <section class="section-container">
+        <h2 class="section-title">Top Performers</h2>
+        <div class="performers-grid">
+            <!-- Performer 1 -->
+            <div class="performer-card">
+                <div class="performer-bg city-bg"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Erling_Haaland_2023_%28cropped%29.jpg/440px-Erling_Haaland_2023_%28cropped%29.jpg" alt="Haaland" class="performer-img">
+                <div class="performer-info">
+                    <h3>Erling Haaland</h3>
+                    <p>Manchester City</p>
+                </div>
+                <div class="performer-stats">
+                    <div class="stat">
+                        <span class="stat-val">28</span>
+                        <span class="stat-label">Goals</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-val">5</span>
+                        <span class="stat-label">Assists</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-val">9.2</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performer 2 -->
+            <div class="performer-card">
+                <div class="performer-bg real-bg"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93129_%28cropped%29.jpg/440px-2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93129_%28cropped%29.jpg" alt="Mbappe" class="performer-img">
+                <div class="performer-info">
+                    <h3>Kylian Mbappé</h3>
+                    <p>Real Madrid</p>
+                </div>
+                <div class="performer-stats">
+                    <div class="stat">
+                        <span class="stat-val">25</span>
+                        <span class="stat-label">Goals</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-val">8</span>
+                        <span class="stat-label">Assists</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-val">9</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performer 3 -->
+            <div class="performer-card">
+                <div class="performer-bg bayern-bg"></div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Harry_Kane_2024.jpg/440px-Harry_Kane_2024.jpg" alt="Kane" class="performer-img">
+                <div class="performer-info">
+                    <h3>Harry Kane</h3>
+                    <p>Bayern Munich</p>
+                </div>
+                <div class="performer-stats">
+                    <div class="stat">
+                        <span class="stat-val">22</span>
+                        <span class="stat-label">Goals</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-val">12</span>
+                        <span class="stat-label">Assists</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-val">8.8</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Predictions -->
+    <section class="section-container">
+        <h2 class="section-title">Community Predictions</h2>
+        <div class="predictions-grid">
+            <!-- Prediction 1 -->
+            <div class="prediction-card">
+                <div class="pred-header">
+                    <span class="user-name">FootballFan22</span>
+                    <span class="pred-badge pending">pending</span>
+                </div>
+                <div class="pred-match">Arsenal vs Chelsea</div>
+                <div class="pred-pick">2-1 Arsenal</div>
+                <div class="pred-confidence">
+                    <span>Confidence</span>
+                    <div class="progress-bar"><div class="fill" style="width: 85%"></div></div>
+                    <span>85%</span>
+                </div>
+            </div>
+
+            <!-- Prediction 2 -->
+            <div class="prediction-card">
+                <div class="pred-header">
+                    <span class="user-name">StatMaster</span>
+                    <span class="pred-badge correct">correct</span>
+                </div>
+                <div class="pred-match">Inter vs Milan</div>
+                <div class="pred-pick">1-1 Draw</div>
+                <div class="pred-confidence">
+                    <span>Confidence</span>
+                    <div class="progress-bar"><div class="fill" style="width: 72%"></div></div>
+                    <span>72%</span>
+                </div>
+            </div>
+
+            <!-- Prediction 3 -->
+            <div class="prediction-card">
+                <div class="pred-header">
+                    <span class="user-name">ProPredictor</span>
+                    <span class="pred-badge incorrect">incorrect</span>
+                </div>
+                <div class="pred-match">Juventus vs Napoli</div>
+                <div class="pred-pick">3-0 Juventus</div>
+                <div class="pred-confidence">
+                    <span>Confidence</span>
+                    <div class="progress-bar"><div class="fill" style="width: 90%"></div></div>
+                    <span>90%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- League Standings -->
+    <section class="section-container">
+        <h2 class="section-title">Current League Standings</h2>
+        <div class="standings-container">
+            <!-- Premier League -->
+            <div class="standings-card">
+                <div class="standings-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg" alt="PL" class="league-logo">
+                    <h3>Premier League</h3>
+                </div>
+                <ul class="standings-list">
+                    <li>
+                        <span class="rank rank-1">1</span>
+                        <div class="team-info">
+                            <span class="team-name">Manchester City</span>
+                            <span class="matches-played">30 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">73 pts</span>
+                            <span class="diff positive">+41</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-2">2</span>
+                        <div class="team-info">
+                            <span class="team-name">Arsenal</span>
+                            <span class="matches-played">30 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">68 pts</span>
+                            <span class="diff positive">+28</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-3">3</span>
+                        <div class="team-info">
+                            <span class="team-name">Liverpool</span>
+                            <span class="matches-played">29 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">63 pts</span>
+                            <span class="diff positive">+25</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-4">4</span>
+                        <div class="team-info">
+                            <span class="team-name">Chelsea</span>
+                            <span class="matches-played">30 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">58 pts</span>
+                            <span class="diff positive">+18</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-5">5</span>
+                        <div class="team-info">
+                            <span class="team-name">Tottenham</span>
+                            <span class="matches-played">30 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">54 pts</span>
+                            <span class="diff positive">+15</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="../tables/tables.html" class="btn-full-standings">View Full Standings</a>
+            </div>
+
+            <!-- La Liga -->
+            <div class="standings-card">
+                <div class="standings-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/1200px-LaLiga_logo_2023.svg.png" alt="La Liga" class="league-logo">
+                    <h3>La Liga</h3>
+                </div>
+                <ul class="standings-list">
+                    <li>
+                        <span class="rank rank-1">1</span>
+                        <div class="team-info">
+                            <span class="team-name">Real Madrid</span>
+                            <span class="matches-played">28 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">68 pts</span>
+                            <span class="diff positive">+38</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-2">2</span>
+                        <div class="team-info">
+                            <span class="team-name">Barcelona</span>
+                            <span class="matches-played">28 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">64 pts</span>
+                            <span class="diff positive">+32</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-3">3</span>
+                        <div class="team-info">
+                            <span class="team-name">Atletico Madrid</span>
+                            <span class="matches-played">28 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_2017_logo.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">58 pts</span>
+                            <span class="diff positive">+22</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-4">4</span>
+                        <div class="team-info">
+                            <span class="team-name">Sevilla</span>
+                            <span class="matches-played">28 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Sevilla_FC_logo.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">52 pts</span>
+                            <span class="diff positive">+15</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="rank rank-5">5</span>
+                        <div class="team-info">
+                            <span class="team-name">Villarreal</span>
+                            <span class="matches-played">28 matches</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/7/70/Villarreal_CF_logo.svg" class="mini-logo">
+                        <div class="points-info">
+                            <span class="points">48 pts</span>
+                            <span class="diff positive">+12</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="../tables/tables.html" class="btn-full-standings">View Full Standings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Spotlight -->
+    <section class="section-container">
+        <div class="spotlight-card">
+            <div class="spotlight-left">
+                <div class="spotlight-img-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Erling_Haaland_2023_%28cropped%29.jpg/440px-Erling_Haaland_2023_%28cropped%29.jpg" alt="Haaland" class="spotlight-img">
+                </div>
+                <h2>Erling Haaland</h2>
+                <p class="spotlight-team">Manchester City • Striker</p>
+                <div class="spotlight-mini-stats">
+                    <div class="mini-stat">
+                        <span class="val">28</span>
+                        <span class="lbl">Goals</span>
+                    </div>
+                    <div class="mini-stat active">
+                        <span class="val">7</span>
+                        <span class="lbl">Assists</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="val">9.2</span>
+                        <span class="lbl">Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="spotlight-right">
+                <h3>Season Performance</h3>
+                
+                <div class="stat-bar-group">
+                    <div class="stat-bar-label">
+                        <span>Goals per Game</span>
+                        <span class="stat-bar-val">1.8</span>
+                    </div>
+                    <div class="stat-bar-bg">
+                        <div class="stat-bar-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-bar-group">
+                    <div class="stat-bar-label">
+                        <span>Shot Accuracy</span>
+                        <span class="stat-bar-val">67%</span>
+                    </div>
+                    <div class="stat-bar-bg">
+                        <div class="stat-bar-fill" style="width: 67%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-bar-group">
+                    <div class="stat-bar-label">
+                        <span>Match Rating</span>
+                        <span class="stat-bar-val">9.2/10</span>
+                    </div>
+                    <div class="stat-bar-bg">
+                        <div class="stat-bar-fill" style="width: 92%"></div>
+                    </div>
+                </div>
+
+                <a href="../players/players.html" class="btn-full-profile">
+                    <i class="fa-solid fa-circle-user"></i> View Full Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Dashboard -->
+    <section class="section-container">
+        <h2 class="section-title">Live Statistics Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="dash-card white-card">
+                <i class="fa-solid fa-futbol dash-icon"></i>
+                <h3>1,247</h3>
+                <p class="dash-label">Goals This Week</p>
+                <p class="dash-trend positive">↗ +12% from last week</p>
+            </div>
+            <div class="dash-card green-card">
+                <i class="fa-solid fa-person-running dash-icon"></i>
+                <h3>89</h3>
+                <p class="dash-label">Live Matches</p>
+                <p class="dash-sub">Across 15 leagues</p>
+            </div>
+            <div class="dash-card white-card">
+                <i class="fa-solid fa-users dash-icon"></i>
+                <h3>24.8k</h3>
+                <p class="dash-label">Active Predictors</p>
+                <p class="dash-trend gray">↗ +5% today</p>
+            </div>
+            <div class="dash-card pink-card">
+                <i class="fa-solid fa-ticket dash-icon"></i>
+                <h3>3,456</h3>
+                <p class="dash-label">Tickets Sold</p>
+                <p class="dash-sub">This month</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-card">
+            <h2>Ready to Become a Football Expert?</h2>
+            <p>Join StatArena today and get access to exclusive statistics, match predictions, and the most comprehensive football platform on the web.</p>
+            <div class="cta-buttons">
+                <a href="../tickets/tickets.html" class="cta-btn primary">
+                    <i class="fa-solid fa-ticket"></i> Book Match Tickets
+                </a>
+                <a href="../predictions/predictions.html" class="cta-btn secondary">Start Predicting</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-card">
+            <h2>Stay Updated with StatArena</h2>
+            <p>Get the latest match results, player stats, and exclusive predictions delivered straight to your inbox.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" class="email-input">
+                <button class="subscribe-btn">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section footer-brand">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-futbol"></i>
+                    <span>StatArena</span>
+                </div>
+                <p class="footer-description">The ultimate destination for football enthusiasts. Get real-time statistics, match analysis, make predictions, and book tickets for your favorite teams. Join millions of fans worldwide who trust StatArena for their football experience.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+                <div class="app-downloads">
+                    <p class="download-label">Download our mobile app:</p>
+                    <div class="download-buttons">
+                        <a href="#" class="app-btn">
+                            <i class="fa-brands fa-apple"></i> App Store
+                        </a>
+                        <a href="#" class="app-btn">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-circle-play"></i> Live Matches</a></li>
+                    <li><a href="#"><i class="fa-solid fa-pen"></i> Predictions</a></li>
+                    <li><a href="#"><i class="fa-solid fa-ticket"></i> Book Tickets</a></li>
+                    <li><a href="#"><i class="fa-solid fa-users"></i> Players</a></li>
+                    <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Clubs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Leagues</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-flag"></i> Premier League</a></li>
+                    <li><a href="#"><i class="fa-solid fa-flag"></i> La Liga</a></li>
+                    <li><a href="#"><i class="fa-solid fa-flag"></i> Serie A</a></li>
+                    <li><a href="#"><i class="fa-solid fa-flag"></i> Bundesliga</a></li>
+                    <li><a href="#"><i class="fa-solid fa-flag"></i> Ligue 1</a></li>
+                    <li><a href="#"><i class="fa-solid fa-star"></i> Champions League</a></li>
+                    <li><a href="#"><i class="fa-solid fa-globe"></i> World Cup</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+                    <li><a href="#"><i class="fa-solid fa-envelope"></i> Contact Support</a></li>
+                    <li><a href="#"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fa-solid fa-shield"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-lines"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fa-solid fa-cookie-bite"></i> Cookie Policy</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bug"></i> Report Bug</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Stats -->
+        <div class="footer-stats">
+            <div class="footer-stat">
+                <h3>50M+</h3>
+                <p>Match Records</p>
+            </div>
+            <div class="footer-stat">
+                <h3>2.8M+</h3>
+                <p>Active Users</p>
+            </div>
+            <div class="footer-stat">
+                <h3>15k+</h3>
+                <p>Daily Predictions</p>
+            </div>
+            <div class="footer-stat">
+                <h3>99.9%</h3>
+                <p>Uptime</p>
+            </div>
+        </div>
+
+        <!-- Trusted Organizations -->
+        <div class="trusted-section">
+            <h4>Trusted by Leading Football Organizations</h4>
+            <div class="org-badges">
+                <span class="org-badge">UEFA</span>
+                <span class="org-badge">FIFA</span>
+                <span class="org-badge">Premier League</span>
+                <span class="org-badge">La Liga</span>
+                <span class="org-badge">Serie A</span>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 StatArena. All rights reserved. Built with ❤️ for football fans worldwide.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Accessibility</a>
+                <a href="#">Sitemap</a>
+                <a href="#">API</a>
+                <a href="#">Careers</a>
+            </div>
+        </div>
+
+        <p class="disclaimer">StatArena is not affiliated with any football league, team, or organization. All team names, logos, and statistics are used for informational purposes only.</p>
+    </footer>
+
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+</body>
+</html>

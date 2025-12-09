@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="tickets.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-content">
+                <h1><i class="fa-solid fa-ticket"></i> STATARENA tickets</h1>
+                <p>Secure premium seats, pick your perfect date, and breeze through checkout with our streamlined booking flow.</p>
+            </div>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step active">
+                <div class="step-circle">1</div>
+                <div class="step-label">SELECT MATCH</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-circle">2</div>
+                <div class="step-label">SELECT TICKETS</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-circle">3</div>
+                <div class="step-label">CHECKOUT</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-wrapper">
+            <!-- Left Section: Featured Match Tickets -->
+            <div class="featured-section">
+                <div class="section-header">
+                    <h2>Featured Match Tickets</h2>
+                </div>
+
+                <!-- League Header -->
+                <div class="league-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Ligue_1_Logo_%282008-2024%29.svg" alt="Ligue 1" class="league-flag">
+                    <h3>Ligue 1</h3>
+                    <span class="matches-count">13 Matches</span>
+                </div>
+
+                <!-- Match Cards Grid -->
+                <div class="match-cards-grid">
+                    <!-- Match Card 1 -->
+                    <div class="match-card">
+                        <div class="instant-booking-badge">
+                            <i class="fa-solid fa-bolt"></i> Instant booking
+                        </div>
+                        <span class="league-tag">LIGUE 1</span>
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800" alt="Stadium" class="stadium-image">
+                        <div class="card-content">
+                            <div class="price-tag">
+                                <span class="from-text">FROM</span>
+                                <span class="price">€60.00</span>
+                            </div>
+                            <div class="experience-label">EXPERIENCE</div>
+                            <h4 class="match-title">Paris Saint-Germain vs Olympique Marseille</h4>
+                            <div class="match-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Paris, France</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>Wed • Jan 29 • 12:00 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Match Card 2 -->
+                    <div class="match-card">
+                        <div class="instant-booking-badge">
+                            <i class="fa-solid fa-bolt"></i> Instant booking
+                        </div>
+                        <span class="league-tag">LIGUE 1</span>
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800" alt="Stadium" class="stadium-image">
+                        <div class="card-content">
+                            <div class="price-tag">
+                                <span class="from-text">FROM</span>
+                                <span class="price">€38.00</span>
+                            </div>
+                            <div class="experience-label">EXPERIENCE</div>
+                            <h4 class="match-title">Lyon vs Monaco</h4>
+                            <div class="match-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Lyon, France</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>Wed • Feb 12 • 10:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Match Card 3 -->
+                    <div class="match-card">
+                        <div class="instant-booking-badge">
+                            <i class="fa-solid fa-bolt"></i> Instant booking
+                        </div>
+                        <span class="league-tag">LIGUE 1</span>
+                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=800" alt="Stadium" class="stadium-image">
+                        <div class="card-content">
+                            <div class="price-tag">
+                                <span class="from-text">FROM</span>
+                                <span class="price">€58.00</span>
+                            </div>
+                            <div class="experience-label">EXPERIENCE</div>
+                            <h4 class="match-title">Paris Saint-Germain vs Lille</h4>
+                            <div class="match-details">
+                                <div class="detail-item">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Paris, France</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>Wed • Mar 12 • 11:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: Selected Event -->
+            <div class="selected-event-section">
+                <h3>Selected Event</h3>
+                <div class="event-details">
+                    <div class="event-row">
+                        <span class="label">MATCH</span>
+                        <span class="value">Paris Saint-Germain vs Olympique Marseille</span>
+                    </div>
+                    <div class="event-row">
+                        <span class="label">STADIUM</span>
+                        <span class="value">Parc des Princes</span>
+                    </div>
+                    <div class="event-row">
+                        <span class="label">DATE & TIME</span>
+                        <span class="value">Wed • Jan 29 • 12:00 AM</span>
+                    </div>
+                </div>
+                <button class="btn-continue">Continue to Seat Selection</button>
+                <div class="step-indicator">
+                    <i class="fa-solid fa-check"></i> Step 1 of 3
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="tickets.js"></script>
+</body>
+</html>

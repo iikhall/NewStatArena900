@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Predictions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="predictions.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-content">
+                <h1>Predict the Beautiful Game</h1>
+                <p>Stay ahead of every fixture with real-time match insights, earn points for accurate picks, and climb the StatArena leaderboard.</p>
+                <div class="feature-badges">
+                    <span class="feature-badge">
+                        <i class="fa-solid fa-trophy"></i> Live community leaderboard
+                    </span>
+                    <span class="feature-badge">
+                        <i class="fa-solid fa-bolt"></i> Instant score tracking
+                    </span>
+                    <span class="feature-badge">
+                        <i class="fa-solid fa-shield-halved"></i> Secure account history
+                    </span>
+                </div>
+            </div>
+            <div class="hero-circle"></div>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-dashboard">
+            <div class="stat-card">
+                <h4>Your points</h4>
+                <h2>40</h2>
+                <p>Total earned</p>
+            </div>
+            <div class="stat-card">
+                <h4>Predictions</h4>
+                <h2>4</h2>
+                <p>Submitted this month</p>
+            </div>
+            <div class="stat-card">
+                <h4>Accuracy</h4>
+                <h2>0%</h2>
+                <p>Success rate</p>
+            </div>
+            <div class="stat-card">
+                <h4>Rank</h4>
+                <h2>#--</h2>
+                <p>Global standing</p>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Left Section: Make Predictions -->
+            <div class="predictions-section">
+                <div class="section-header">
+                    <h2>Make Predictions</h2>
+                    <p>Select a fixture, choose your result, and lock in your scoreline to earn points.</p>
+                </div>
+
+                <!-- Prediction Card 1 - Active -->
+                <div class="prediction-card active" data-match-id="4">
+                    <div class="card-header">
+                        <span class="match-time">
+                            <i class="fa-regular fa-clock"></i> 12/9/2025
+                        </span>
+                        <span class="league-badge">PREMIER LEAGUE</span>
+                    </div>
+                    <div class="match-info">
+                        <div class="team">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" alt="Arsenal" class="team-logo">
+                            <span class="team-name">Arsenal</span>
+                        </div>
+                        <span class="vs-text">VS</span>
+                        <div class="team right">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" alt="Tottenham" class="team-logo">
+                            <span class="team-name">Tottenham</span>
+                        </div>
+                    </div>
+                    
+                    <div class="who-will-win">
+                        <h4>Who Will Win?</h4>
+                        <div class="win-options">
+                            <button type="button" class="win-btn">Arsenal</button>
+                            <button type="button" class="win-btn">Draw</button>
+                            <button type="button" class="win-btn">Tottenham</button>
+                        </div>
+                    </div>
+
+                    <div class="scoreline-section">
+                        <p class="scoreline-label">Lock in your scoreline</p>
+                        <div class="score-inputs">
+                            <div class="score-input-group">
+                                <input type="number" value="0" min="0" class="score-input">
+                                <button type="button" class="increment-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
+                            <div class="score-input-group">
+                                <input type="number" value="0" min="0" class="score-input">
+                                <button type="button" class="increment-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-submit-prediction">Submit Prediction</button>
+                </div>
+
+                <!-- Prediction Card 2 - Active -->
+                <div class="prediction-card active" data-match-id="5">
+                    <div class="card-header">
+                        <span class="match-time">
+                            <i class="fa-regular fa-clock"></i> 12/10/2025
+                        </span>
+                        <span class="league-badge">PREMIER LEAGUE</span>
+                    </div>
+                    <div class="match-info">
+                        <div class="team">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City" class="team-logo">
+                            <span class="team-name">Manchester City</span>
+                        </div>
+                        <span class="vs-text">VS</span>
+                        <div class="team right">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Bayern_Munich_logo_(2017).svg" alt="Bayern Munich" class="team-logo">
+                            <span class="team-name">Bayern Munich</span>
+                        </div>
+                    </div>
+                    
+                    <div class="who-will-win">
+                        <h4>Who Will Win?</h4>
+                        <div class="win-options">
+                            <button type="button" class="win-btn">Manchester City</button>
+                            <button type="button" class="win-btn">Draw</button>
+                            <button type="button" class="win-btn">Bayern Munich</button>
+                        </div>
+                    </div>
+
+                    <div class="scoreline-section">
+                        <p class="scoreline-label">Lock in your scoreline</p>
+                        <div class="score-inputs">
+                            <div class="score-input-group">
+                                <input type="number" value="0" min="0" class="score-input">
+                                <button type="button" class="increment-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
+                            <div class="score-input-group">
+                                <input type="number" value="0" min="0" class="score-input">
+                                <button type="button" class="increment-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-submit-prediction">Submit Prediction</button>
+                </div>
+
+                <!-- Prediction Card 3 - Active -->
+                <div class="prediction-card active" data-match-id="6">
+                    <div class="card-header">
+                        <span class="match-time">
+                            <i class="fa-regular fa-clock"></i> 12/11/2025
+                        </span>
+                        <span class="league-badge">LA LIGA</span>
+                    </div>
+                    <div class="match-info">
+                        <div class="team">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_(crest).svg" alt="Barcelona" class="team-logo">
+                            <span class="team-name">Barcelona</span>
+                        </div>
+                        <span class="vs-text">VS</span>
+                        <div class="team right">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid" class="team-logo">
+                            <span class="team-name">Real Madrid</span>
+                        </div>
+                    </div>
+                    
+                    <div class="who-will-win">
+                        <h4>Who Will Win?</h4>
+                        <div class="win-options">
+                            <button type="button" class="win-btn">Barcelona</button>
+                            <button type="button" class="win-btn">Draw</button>
+                            <button type="button" class="win-btn">Real Madrid</button>
+                        </div>
+                    </div>
+
+                    <div class="scoreline-section">
+                        <p class="scoreline-label">Lock in your scoreline</p>
+                        <div class="score-inputs">
+                            <div class="score-input-group">
+                                <input type="number" value="0" min="0" class="score-input">
+                                <button type="button" class="increment-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
+                            <div class="score-input-group">
+                                <input type="number" value="0" min="0" class="score-input">
+                                <button type="button" class="increment-btn"><i class="fa-solid fa-chevron-up"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-submit-prediction">Submit Prediction</button>
+                </div>
+            </div>
+
+            <!-- Right Section: Leaderboards & Recent -->
+            <div class="sidebar-section">
+                <!-- Top Predictors -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <h3><i class="fa-solid fa-trophy"></i> Top Predictors</h3>
+                        <p>See who is dominating the leaderboard.</p>
+                    </div>
+
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item">
+                            <span class="rank">#1</span>
+                            <div class="user-avatar">FO</div>
+                            <div class="user-stats">
+                                <span class="accuracy">87.2% accuracy</span>
+                                <span class="predictions-count">89 predictions</span>
+                            </div>
+                            <span class="points">2450 pts</span>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">#2</span>
+                            <div class="user-avatar">ST</div>
+                            <div class="user-stats">
+                                <span class="accuracy">84.2% accuracy</span>
+                                <span class="predictions-count">76 predictions</span>
+                            </div>
+                            <span class="points">2180 pts</span>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">#3</span>
+                            <div class="user-avatar">PR</div>
+                            <div class="user-stats">
+                                <span class="accuracy">79.4% accuracy</span>
+                                <span class="predictions-count">68 predictions</span>
+                            </div>
+                            <span class="points">1920 pts</span>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">#4</span>
+                            <div class="user-avatar">US</div>
+                            <div class="user-stats">
+                                <span class="accuracy">0% accuracy</span>
+                                <span class="predictions-count">4 predictions</span>
+                            </div>
+                            <span class="points">40 pts</span>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">#5</span>
+                            <div class="user-avatar">US</div>
+                            <div class="user-stats">
+                                <span class="accuracy">0% accuracy</span>
+                                <span class="predictions-count">1 predictions</span>
+                            </div>
+                            <span class="points">10 pts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Your Recent Predictions -->
+                <div class="sidebar-card">
+                    <div class="sidebar-header">
+                        <h3><i class="fa-solid fa-clock-rotate-left"></i> Your Recent Predictions</h3>
+                        <p>Review your latest picks and keep track of upcoming fixtures.</p>
+                    </div>
+
+                    <div class="recent-predictions-list">
+                        <!-- Predictions will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="predictions.js"></script>
+</body>
+</html>

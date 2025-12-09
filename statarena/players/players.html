@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Players</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="players.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Khaled!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <h1>Professional Players</h1>
+            <p>Discover the world's top football talent with comprehensive player profiles, statistics, and performance data</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-box">
+                <i class="fa-solid fa-users stat-icon"></i>
+                <h3>0</h3>
+                <p>Total Players</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-trophy stat-icon"></i>
+                <h3>0</h3>
+                <p>World Class</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-futbol stat-icon"></i>
+                <h3>0</h3>
+                <p>Total Goals</p>
+            </div>
+            <div class="stat-box">
+                <i class="fa-solid fa-handshake stat-icon"></i>
+                <h3>0</h3>
+                <p>Total Assists</p>
+            </div>
+        </div>
+
+        <!-- All Players Section -->
+        <section class="players-section">
+            <div class="section-header">
+                <h2 class="section-title">All Players</h2>
+                <!-- <div class="view-toggle">
+                    <button class="view-btn active">
+                        <i class="fa-solid fa-grid-2"></i> Grid View
+                    </button>
+                    <button class="view-btn">
+                        <i class="fa-solid fa-list"></i> List View
+                    </button>
+                </div> -->
+            </div>
+
+            <div class="players-grid">
+                <!-- Player Card 1 - Erling Haaland -->
+                <div class="player-card">
+                    <div class="player-card-header">
+                        <span class="country-badge">
+                            <i class="fa-solid fa-flag"></i> NORWAY
+                        </span>
+                        <span class="rating-badge">9.2</span>
+                    </div>
+                    <div class="player-image-container">
+                        <img src="https://www.mancity.com/meta/media/d4boprad/erling-haaland-elec-blue.png?width=600" alt="Haaland" class="player-image">
+                        <span class="jersey-number">#9</span>
+                    </div>
+                    <div class="player-card-body">
+                        <h3 class="player-name">Erling Haaland</h3>
+                        <p class="player-club-position">Manchester City • Forward</p>
+                        <p class="player-meta">Age: 23 • Market Value: €180M</p>
+                        
+                        <div class="player-stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value-green">28</span>
+                                <span class="stat-label">Goals</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Assists</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value-blue">9.2</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="speed-bar">
+                            <div class="speed-label">
+                                <span>Speed</span>
+                                <span class="speed-value">92</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+
+                        <div class="player-actions">
+                            <a href="player-details.html?id=1" class="btn-view-player">
+                                <i class="fa-solid fa-circle-info"></i> View Details
+                            </a>
+                            <button class="btn-favorite-player" data-player-name="Erling Haaland" onclick="toggleFavoritePlayer('Erling Haaland'); updateFavoriteIcons();">
+                                <i class="fa-regular fa-heart favorite-icon"></i> 444K
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player Card 2 - Kylian Mbappé -->
+                <div class="player-card">
+                    <div class="player-card-header">
+                        <span class="country-badge">
+                            <i class="fa-solid fa-flag"></i> FRANCE
+                        </span>
+                        <span class="rating-badge">9</span>
+                    </div>
+                    <div class="player-image-container">
+                        <img src="https://publish.realmadrid.com/content/dam/portals/realmadrid-com/es-es/sports/football/3kq9cckrnlogidldtdie2fkbl/players/mbappe/assets/2025%20MBAPPE_550x650.png" alt="Mbappe" class="player-image">
+                        <span class="jersey-number">#7</span>
+                    </div>
+                    <div class="player-card-body">
+                        <h3 class="player-name">Kylian Mbappé</h3>
+                        <p class="player-club-position">Paris Saint-Germain • Forward</p>
+                        <p class="player-meta">Age: 25 • Market Value: €160M</p>
+                        
+                        <div class="player-stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value-green">25</span>
+                                <span class="stat-label">Goals</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Assists</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value-blue">9</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="speed-bar">
+                            <div class="speed-label">
+                                <span>Speed</span>
+                                <span class="speed-value">97</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 97%"></div>
+                            </div>
+                        </div>
+
+                        <div class="player-actions">
+                            <a href="player-details.html?id=2" class="btn-view-player">
+                                <i class="fa-solid fa-circle-info"></i> View Details
+                            </a>
+                            <button class="btn-favorite-player" data-player-name="Kylian Mbappé" onclick="toggleFavoritePlayer('Kylian Mbappé'); updateFavoriteIcons();">
+                                <i class="fa-regular fa-heart favorite-icon"></i> 418K
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player Card 3 - Harry Kane -->
+                <div class="player-card">
+                    <div class="player-card-header">
+                        <span class="country-badge">
+                            <i class="fa-solid fa-flag"></i> ENGLAND
+                        </span>
+                        <span class="rating-badge">8.8</span>
+                    </div>
+                    <div class="player-image-container">  <img src="https://assets.bundesliga.com/player/dfl-obj-j00zz3-dfl-clu-00000g-dfl-sea-0001k9.png" alt="Kane" class="player-image">
+                      
+                        <span class="jersey-number">#9</span>
+                    </div>
+                    <div class="player-card-body">
+                        <h3 class="player-name">Harry Kane</h3>
+                        <p class="player-club-position">Bayern Munich • Forward</p>
+                        <p class="player-meta">Age: 30 • Market Value: €100M</p>
+                        
+                        <div class="player-stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value-green">22</span>
+                                <span class="stat-label">Goals</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Assists</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value-blue">8.8</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="speed-bar">
+                            <div class="speed-label">
+                                <span>Speed</span>
+                                <span class="speed-value">75</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="player-actions">
+                            <a href="player-details.html?id=3" class="btn-view-player">
+                                <i class="fa-solid fa-circle-info"></i> View Details
+                            </a>
+                            <button class="btn-favorite-player" data-player-name="Harry Kane" onclick="toggleFavoritePlayer('Harry Kane'); updateFavoriteIcons();">
+                                <i class="fa-regular fa-heart favorite-icon"></i> 393K
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player Card 4 - Kevin De Bruyne -->
+                <div class="player-card">
+                    <div class="player-card-header">
+                        <span class="country-badge">
+                            <i class="fa-solid fa-flag"></i> BELGIUM
+                        </span>
+                        <span class="rating-badge">8.6</span>
+                    </div>
+                    <div class="player-image-container">
+                        <img src="https://img.uefa.com/imgml/TP/players/1/2026/cutoff/250008901.webp" alt="De Bruyne" class="player-image">
+                        <span class="jersey-number">#17</span>
+                    </div>
+                    <div class="player-card-body">
+                        <h3 class="player-name">Kevin De Bruyne</h3>
+                        <p class="player-club-position">Manchester City • Midfielder</p>
+                        <p class="player-meta">Age: 32 • Market Value: €90M</p>
+                        
+                        <div class="player-stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-value-green">8</span>
+                                <span class="stat-label">Goals</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">18</span>
+                                <span class="stat-label">Assists</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value-blue">8.6</span>
+                                <span class="stat-label">Rating</span>
+                            </div>
+                        </div>
+
+                        <div class="speed-bar">
+                            <div class="speed-label">
+                                <span>Speed</span>
+                                <span class="speed-value">76</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: 76%"></div>
+                            </div>
+                        </div>
+
+                        <div class="player-actions">
+                            <a href="player-details.html?id=4" class="btn-view-player">
+                                <i class="fa-solid fa-circle-info"></i> View Details
+                            </a>
+                            <button class="btn-favorite-player" data-player-name="Kevin De Bruyne" onclick="toggleFavoritePlayer('Kevin De Bruyne'); updateFavoriteIcons();">
+                                <i class="fa-regular fa-heart favorite-icon"></i> 367K
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="../assets/js/favorites.js"></script>
+</body>
+</html>

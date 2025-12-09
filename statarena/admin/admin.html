@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="logo">
+                <i class="fa-solid fa-futbol"></i>
+                STATARENA
+            </div>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right">
+            <div class="user-info">
+                <span>Welcome, Admin!</span>
+                <i class="fa-regular fa-circle-user user-icon"></i>
+            </div>
+            <i class="fa-solid fa-arrow-right-from-bracket logout-icon"></i>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Admin Header -->
+        <div class="admin-header">
+            <div class="header-content">
+                <i class="fa-solid fa-user-shield"></i>
+                <div>
+                    <h1>Administrator Dashboard</h1>
+                    <p>Welcome to the StatArena admin control panel</p>
+                </div>
+            </div>
+            <div class="admin-badge-large">
+                <i class="fa-solid fa-crown"></i> ADMIN ACCESS
+            </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon users">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalUsers">0</h3>
+                    <p>Total Users</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-icon admins">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="totalAdmins">0</h3>
+                    <p>Administrators</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-icon active">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="activeUsers">0</h3>
+                    <p>Active Sessions</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-icon new">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 id="newUsers">0</h3>
+                    <p>New This Week</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-btn active" onclick="switchTab('users')">
+                <i class="fa-solid fa-users-gear"></i> User Management
+            </button>
+            <button class="tab-btn" onclick="switchTab('matches')">
+                <i class="fa-solid fa-futbol"></i> Matches
+            </button>
+            <button class="tab-btn" onclick="switchTab('predictions')">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </button>
+            <button class="tab-btn" onclick="switchTab('tickets')">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </button>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="management-section" id="users-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-users-gear"></i> User Management</h2>
+                <button class="btn-refresh" onclick="loadUsers()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                </button>
+            </div>
+
+            <div class="users-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Created Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Users will be loaded here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Matches Management Section -->
+        <div class="management-section" id="matches-section" style="display: none;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-futbol"></i> Match Management</h2>
+                <button class="btn-add" onclick="showAddMatchModal()">
+                    <i class="fa-solid fa-plus"></i> Add Match
+                </button>
+            </div>
+
+            <div class="matches-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Home Team</th>
+                            <th>Away Team</th>
+                            <th>League</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="matchesTableBody">
+                        <!-- Matches will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Predictions Management Section -->
+        <div class="management-section" id="predictions-section" style="display: none;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-pen"></i> Prediction Management</h2>
+                <button class="btn-refresh" onclick="loadPredictions()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                </button>
+            </div>
+
+            <div class="predictions-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Match</th>
+                            <th>Prediction</th>
+                            <th>Status</th>
+                            <th>Points</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="predictionsTableBody">
+                        <!-- Predictions will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tickets Management Section -->
+        <div class="management-section" id="tickets-section" style="display: none;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-ticket"></i> Ticket Management</h2>
+                <button class="btn-add" onclick="showAddTicketModal()">
+                    <i class="fa-solid fa-plus"></i> Add Ticket
+                </button>
+            </div>
+
+            <div class="tickets-table-container">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Match</th>
+                            <th>Section</th>
+                            <th>Price</th>
+                            <th>Available</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketsTableBody">
+                        <!-- Tickets will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- System Info -->
+        <div class="system-info">
+            <h3><i class="fa-solid fa-server"></i> System Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Storage Used:</span>
+                    <span class="info-value" id="storageUsed">0 KB</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Last Login:</span>
+                    <span class="info-value" id="lastLogin">Just now</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">System Status:</span>
+                    <span class="info-value status-online">
+                        <i class="fa-solid fa-circle"></i> Online
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="danger-zone">
+            <h3><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</h3>
+            <p>These actions are irreversible. Use with caution.</p>
+            <button class="btn-danger" onclick="clearAllData()">
+                <i class="fa-solid fa-trash"></i> Clear All User Data
+            </button>
+        </div>
+    </div>
+
+    <!-- Add Match Modal -->
+    <div id="addMatchModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-futbol"></i> Add New Match</h2>
+                <span class="close" onclick="closeModal('addMatchModal')">&times;</span>
+            </div>
+            <form id="addMatchForm" onsubmit="addMatch(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Home Team *</label>
+                        <select id="homeTeam" required>
+                            <option value="">Select Home Team</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Away Team *</label>
+                        <select id="awayTeam" required>
+                            <option value="">Select Away Team</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>League *</label>
+                        <select id="league" required>
+                            <option value="">Select League</option>
+                            <option value="1">Premier League</option>
+                            <option value="2">La Liga</option>
+                            <option value="3">Serie A</option>
+                            <option value="4">Bundesliga</option>
+                            <option value="5">Ligue 1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Match Date & Time *</label>
+                        <input type="datetime-local" id="matchDateTime" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Stadium</label>
+                        <input type="text" id="stadium" placeholder="e.g. Old Trafford">
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="matchStatus">
+                            <option value="scheduled">Scheduled</option>
+                            <option value="live">Live</option>
+                            <option value="finished">Finished</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('addMatchModal')">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-check"></i> Add Match
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Ticket Modal -->
+    <div id="addTicketModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-ticket"></i> Add Tickets</h2>
+                <span class="close" onclick="closeModal('addTicketModal')">&times;</span>
+            </div>
+            <form id="addTicketForm" onsubmit="addTicket(event)">
+                <div class="form-group">
+                    <label>Select Match *</label>
+                    <select id="ticketMatch" required>
+                        <option value="">Select a match</option>
+                        <!-- Matches will be loaded dynamically -->
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Section *</label>
+                        <select id="ticketSection" required>
+                            <option value="">Select Section</option>
+                            <option value="VIP">VIP</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Family">Family</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price ($) *</label>
+                        <input type="number" id="ticketPrice" required min="0" step="0.01" placeholder="e.g. 89.99">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Available Quantity *</label>
+                        <input type="number" id="ticketQuantity" required min="1" placeholder="e.g. 100">
+                    </div>
+                    <div class="form-group">
+                        <label>Row/Seat Info</label>
+                        <input type="text" id="seatInfo" placeholder="e.g. Row A, Seats 1-20">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('addTicketModal')">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-check"></i> Add Tickets
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - My Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right" id="navbarRight">
+            <!-- Dynamic content loaded by auth-check.js -->
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="profile-info">
+                <h1 id="userName">Loading...</h1>
+                <p id="userEmail">Loading...</p>
+                <span class="user-badge" id="userBadge">User</span>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Left Section: Personal Information -->
+            <div class="left-section">
+                <!-- Account Information Card -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-user-circle"></i> Account Information</h2>
+                        <button class="btn-edit" onclick="toggleEditMode()">
+                            <i class="fa-solid fa-pen"></i> Edit
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div class="info-group">
+                            <label>Full Name</label>
+                            <input type="text" id="editName" class="edit-input" disabled>
+                            <span id="displayName" class="display-value"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Email Address</label>
+                            <input type="email" id="editEmail" class="edit-input" disabled>
+                            <span id="displayEmail" class="display-value"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Member Since</label>
+                            <span id="memberSince" class="display-value"></span>
+                        </div>
+                        <div class="info-group">
+                            <label>Account Status</label>
+                            <span id="accountStatus" class="display-value status-active">Active</span>
+                        </div>
+                    </div>
+                    <div class="card-actions" id="editActions" style="display: none;">
+                        <button class="btn-save" onclick="saveProfileChanges()">
+                            <i class="fa-solid fa-check"></i> Save Changes
+                        </button>
+                        <button class="btn-cancel" onclick="cancelEdit()">
+                            <i class="fa-solid fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: Favorites & Activity -->
+            <div class="right-section">
+                <!-- Stats Overview -->
+                <div class="stats-overview">
+                    <div class="stat-box">
+                        <i class="fa-solid fa-trophy"></i>
+                        <h3 id="totalPoints">0</h3>
+                        <p>Total Points</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-pen"></i>
+                        <h3 id="totalPredictions">0</h3>
+                        <p>Predictions</p>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fa-solid fa-heart"></i>
+                        <h3 id="totalFavorites">0</h3>
+                        <p>Favorites</p>
+                    </div>
+                </div>
+
+                <!-- Favorite Clubs -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-shield-halved"></i> Favorite Clubs</h2>
+                    </div>
+                    <div class="card-content">
+                        <div id="favoriteClubsList" class="favorites-list">
+                            <!-- Clubs will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Players -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-users"></i> Favorite Players</h2>
+                    </div>
+                    <div class="card-content">
+                        <div id="favoritePlayersList" class="favorites-list">
+                            <!-- Players will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Tickets -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-ticket"></i> My Tickets</h2>
+                        <a href="../tickets/tickets.html" class="view-all-link">Book More</a>
+                    </div>
+                    <div class="card-content">
+                        <div id="myTicketsList" class="tickets-list">
+                            <!-- Tickets will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Resale Listings -->
+                <div class="profile-card">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-tags"></i> My Resale Listings</h2>
+                        <a href="../resell/resell.html" class="view-all-link">Manage</a>
+                    </div>
+                    <div class="card-content">
+                        <div id="myResaleListings" class="tickets-list">
+                            <!-- Resale listings will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/api-client.js"></script>
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StatArena - League Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="league-table.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../home/home.html" style="text-decoration: none; color: inherit;">
+                <div class="logo" style="cursor: pointer;">
+                    <i class="fa-solid fa-futbol"></i>
+                    STATARENA
+                </div>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <a href="../home/home.html" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="../matches/matches.html" class="nav-link">
+                <i class="fa-regular fa-calendar"></i> Matches
+            </a>
+            <a href="../clubs/clubs.html" class="nav-link">
+                <i class="fa-solid fa-shield-halved"></i> Clubs
+            </a>
+            <a href="../players/players.html" class="nav-link">
+                <i class="fa-solid fa-users"></i> Players
+            </a>
+            <a href="../tables/tables.html" class="nav-link" style="background-color: rgba(255, 255, 255, 0.2);">
+                <i class="fa-solid fa-trophy"></i> Leagues & Tables
+            </a>
+            <a href="../predictions/predictions.html" class="nav-link">
+                <i class="fa-solid fa-pen"></i> Predictions
+            </a>
+            <a href="../tickets/tickets.html" class="nav-link">
+                <i class="fa-solid fa-ticket"></i> Tickets
+            </a>
+            <a href="../resell/resell.html" class="nav-link">
+                <i class="fa-solid fa-right-left"></i> Resell
+            </a>
+            <a href="../admin/admin.html" class="nav-link">
+                <i class="fa-solid fa-user-shield"></i> Admin
+            </a>
+        </div>
+        <div class="navbar-right" id="navbarRight">
+            <!-- Dynamic content loaded by auth-check.js -->
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Back Button -->
+        <div style="margin-bottom: 20px;">
+            <a href="tables.html" class="back-button">
+                <i class="fa-solid fa-arrow-left"></i> Back to Leagues
+            </a>
+        </div>
+        
+        <!-- League Table Section -->
+        <div class="table-container">
+            <div class="table-wrapper">
+                <!-- Table Header -->
+                <div class="table-header">
+                    <div class="table-header-cell rank-col">#</div>
+                    <div class="table-header-cell club-col">CLUB</div>
+                    <div class="table-header-cell stat-col">MP</div>
+                    <div class="table-header-cell stat-col">W</div>
+                    <div class="table-header-cell stat-col">D</div>
+                    <div class="table-header-cell stat-col">L</div>
+                    <div class="table-header-cell stat-col">GF</div>
+                    <div class="table-header-cell stat-col">GA</div>
+                    <div class="table-header-cell stat-col">GD</div>
+                    <div class="table-header-cell pts-col">PTS</div>
+                    <div class="table-header-cell form-col">FORM</div>
+                </div>
+
+                <!-- Table Body -->
+                <div class="table-body" id="tableBody">
+                    <!-- Rows will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/auth-check.js"></script>
+    <script src="../assets/js/api-client.js"></script>
+    <script src="league-table.js"></script>
+</body>
+</html>
