@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
         // Generate JWT token
         const token = jwt.sign(
             { user_id: user.user_id, email: user.email, role: user.role },
-            process.env.JWT_SECRET || 'default_secret',
+            process.env.JWT_SECRET || 'statarena_secret_key_2024',
             { expiresIn: '24h' }
         );
         
@@ -50,7 +50,8 @@ router.post('/login', async (req, res) => {
             token,
             user: {
                 user_id: user.user_id,
-                name: user.name,
+                name: user.username,  // Using username field since table has username, not name
+                username: user.username,
                 email: user.email,
                 role: user.role
             }
@@ -83,22 +84,40 @@ router.post('/register', async (req, res) => {
         // const hashedPassword = await bcrypt.hash(password, 10);
         const hashedPassword = password; // For development
         
-        // Insert user
+        // Insert user (using username field since table has username, not name)
         const [result] = await pool.query(`
-            INSERT INTO users (name, email, password, role)
+            INSERT INTO users (username, email, password, role)
             VALUES (?, ?, ?, 'user')
         `, [name, email, hashedPassword]);
         
-        // Create user statistics entry
-        await pool.query(`
-            INSERT INTO user_statistics (user_id)
-            VALUES (?)
-        `, [result.insertId]);
+        // Create user statistics entry if table exists
+        try {
+            await pool.query(`
+                INSERT INTO user_statistics (user_id)
+                VALUES (?)
+            `, [result.insertId]);
+        } catch (err) {
+            console.log('user_statistics table might not exist, skipping...');
+        }
+        
+        // Generate JWT token for auto-login
+        const token = jwt.sign(
+            { user_id: result.insertId, email: email, role: 'user' },
+            process.env.JWT_SECRET || 'statarena_secret_key_2024',
+            { expiresIn: '24h' }
+        );
         
         res.status(201).json({
             success: true,
             message: 'Registration successful',
-            user_id: result.insertId
+            token,
+            user: {
+                user_id: result.insertId,
+                name: name,
+                username: name,
+                email: email,
+                role: 'user'
+            }
         });
     } catch (error) {
         console.error('Registration error:', error);

@@ -175,7 +175,7 @@ router.get('/resale', async (req, res) => {
                 ut.category,
                 ut.quantity,
                 ut.price as original_price,
-                u.name as seller_name
+                u.username as seller_name
             FROM resale_tickets r
             JOIN user_tickets ut ON r.user_ticket_id = ut.user_ticket_id
             JOIN users u ON r.seller_id = u.user_id

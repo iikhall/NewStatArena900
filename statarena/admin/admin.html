@@ -321,9 +321,9 @@
                     <div class="form-group">
                         <label>Status</label>
                         <select id="matchStatus">
-                            <option value="scheduled">Scheduled</option>
-                            <option value="live">Live</option>
-                            <option value="finished">Finished</option>
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="LIVE">Live</option>
+                            <option value="Finished">Finished</option>
                         </select>
                     </div>
                 </div>
@@ -382,6 +382,86 @@
                     <button type="button" class="btn-cancel" onclick="closeModal('addTicketModal')">Cancel</button>
                     <button type="submit" class="btn-submit">
                         <i class="fa-solid fa-check"></i> Add Tickets
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Match Modal -->
+    <div id="editMatchModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-pen"></i> Edit Match</h2>
+                <span class="close" onclick="closeModal('editMatchModal')">&times;</span>
+            </div>
+            <form id="editMatchForm" onsubmit="updateMatch(event)">
+                <input type="hidden" id="editMatchId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Home Team *</label>
+                        <select id="editHomeTeam" required>
+                            <option value="">Select Home Team</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Away Team *</label>
+                        <select id="editAwayTeam" required>
+                            <option value="">Select Away Team</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>League *</label>
+                        <select id="editLeague" required>
+                            <option value="">Select League</option>
+                            <option value="1">Premier League</option>
+                            <option value="2">La Liga</option>
+                            <option value="3">Serie A</option>
+                            <option value="4">Bundesliga</option>
+                            <option value="5">Ligue 1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Match Date & Time *</label>
+                        <input type="datetime-local" id="editMatchDateTime" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Stadium</label>
+                        <input type="text" id="editStadium" placeholder="e.g. Old Trafford">
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="editMatchStatus">
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="LIVE">Live</option>
+                            <option value="Finished">Finished</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Home Score</label>
+                        <input type="number" id="editHomeScore" min="0" placeholder="Enter score for finished matches">
+                    </div>
+                    <div class="form-group">
+                        <label>Away Score</label>
+                        <input type="number" id="editAwayScore" min="0" placeholder="Enter score for finished matches">
+                    </div>
+                </div>
+                <div style="margin-bottom: 15px; padding: 10px; background-color: #1e293b; border-radius: 5px; border-left: 3px solid #f59e0b;">
+                    <small style="color: #fbbf24;">
+                        <i class="fa-solid fa-info-circle"></i> 
+                        <strong>Note:</strong> You can edit scores for finished matches or leave empty for upcoming matches.
+                    </small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('editMatchModal')">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-check"></i> Update Match
                     </button>
                 </div>
             </form>

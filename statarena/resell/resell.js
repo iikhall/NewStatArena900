@@ -26,17 +26,23 @@ async function loadMyTickets() {
     const container = document.getElementById('myTicketsContainer');
     
     try {
+        console.log('Fetching user tickets from API...');
         const response = await fetch(`http://localhost:3000/api/tickets/user/${session.user_id}`, {
             headers: {
                 'Authorization': `Bearer ${session.token}`
             }
         });
         
+        console.log('My tickets response status:', response.status);
+        
         if (!response.ok) {
-            throw new Error('Failed to fetch tickets');
+            const errorData = await response.json();
+            console.error('API error:', errorData);
+            throw new Error(errorData.error || 'Failed to fetch tickets');
         }
         
         const tickets = await response.json();
+        console.log('Loaded user tickets:', tickets);
         
         // Filter only tickets not yet listed for resale
         const availableTickets = tickets.filter(ticket => !ticket.resale_listed);
@@ -87,17 +93,23 @@ async function loadResaleTickets() {
     const container = document.getElementById('resaleTicketsContainer');
     
     try {
+        console.log('Fetching resale tickets from API...');
         const response = await fetch('http://localhost:3000/api/tickets/resale', {
             headers: {
                 'Authorization': `Bearer ${session.token}`
             }
         });
         
+        console.log('Response status:', response.status);
+        
         if (!response.ok) {
-            throw new Error('Failed to fetch resale tickets');
+            const errorData = await response.json();
+            console.error('API error:', errorData);
+            throw new Error(errorData.error || 'Failed to fetch resale tickets');
         }
         
         const tickets = await response.json();
+        console.log('Loaded resale tickets:', tickets);
         
         if (tickets.length === 0) {
             container.innerHTML = `
@@ -140,10 +152,13 @@ async function loadResaleTickets() {
         
     } catch (error) {
         console.error('Error loading resale tickets:', error);
+        console.error('Error details:', error.message);
         container.innerHTML = `
             <div class="empty-state">
                 <i class="fa-solid fa-exclamation-triangle" style="font-size: 48px; color: #f59e0b; margin-bottom: 15px;"></i>
                 <p style="color: #94a3b8;">Failed to load resale tickets. Please try again.</p>
+                <p style="color: #64748b; font-size: 12px; margin-top: 10px;">Error: ${error.message}</p>
+                <p style="color: #64748b; font-size: 12px;">Make sure the backend server is running on port 3000.</p>
             </div>
         `;
     }

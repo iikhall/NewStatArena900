@@ -1,7 +1,44 @@
 // Admin Dashboard JavaScript
 
+// Check admin authentication
+function checkAdminAuth() {
+    const session = localStorage.getItem('statarena_session') || sessionStorage.getItem('statarena_session');
+    
+    if (!session) {
+        alert('Please login to access the admin panel');
+        window.location.href = '../login/login.html';
+        return false;
+    }
+    
+    const userData = JSON.parse(session);
+    
+    // Check if user is admin
+    if (userData.role !== 'admin') {
+        alert('Access Denied: You do not have administrator privileges');
+        window.location.href = '../home/home.html';
+        return false;
+    }
+    
+    // Update welcome message with username
+    const welcomeSpan = document.querySelector('.user-info span');
+    if (welcomeSpan) {
+        welcomeSpan.textContent = `Welcome, ${userData.username || 'Admin'}!`;
+    }
+    
+    return true;
+}
+
 // Load users on page load
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Admin page loaded');
+    
+    // Check admin authentication first
+    if (!checkAdminAuth()) {
+        console.log('Authentication failed - redirecting');
+        return; // Stop execution if not authenticated
+    }
+    
+    console.log('Authentication successful - loading data');
     loadUsers();
     updateStats();
     loadMatches();
@@ -11,20 +48,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Tab switching
 function switchTab(tabName) {
+    console.log('Switching to tab:', tabName);
+    
     // Hide all sections
-    document.getElementById('users-section').style.display = 'none';
-    document.getElementById('matches-section').style.display = 'none';
-    document.getElementById('predictions-section').style.display = 'none';
-    document.getElementById('tickets-section').style.display = 'none';
+    const sections = ['users-section', 'matches-section', 'predictions-section', 'tickets-section'];
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.style.display = 'none';
+        }
+    });
     
     // Remove active class from all tabs
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     
     // Show selected section
-    document.getElementById(tabName + '-section').style.display = 'block';
+    const targetSection = document.getElementById(tabName + '-section');
+    if (targetSection) {
+        targetSection.style.display = 'block';
+    }
     
-    // Add active class to clicked tab
-    event.target.closest('.tab-btn').classList.add('active');
+    // Add active class to clicked tab - use event if available, otherwise find by onclick
+    const clickedBtn = event && event.target ? event.target.closest('.tab-btn') : 
+                       document.querySelector(`.tab-btn[onclick*="'${tabName}'"]`);
+    if (clickedBtn) {
+        clickedBtn.classList.add('active');
+    }
 }
 
 // Modal functions
@@ -52,16 +101,25 @@ window.onclick = function(event) {
 // Load clubs for match form
 async function loadClubsForMatch() {
     try {
-        const response = await fetch('http://localhost:3000/api/clubs');
+        const response = await fetch('http://localhost:3000/api/matches/data/clubs');
         const clubs = await response.json();
         
         const homeSelect = document.getElementById('homeTeam');
         const awaySelect = document.getElementById('awayTeam');
+        const editHomeSelect = document.getElementById('editHomeTeam');
+        const editAwaySelect = document.getElementById('editAwayTeam');
         
         const options = clubs.map(club => `<option value="${club.club_id}">${club.name}</option>`).join('');
         
         homeSelect.innerHTML = '<option value="">Select Home Team</option>' + options;
         awaySelect.innerHTML = '<option value="">Select Away Team</option>' + options;
+        
+        if (editHomeSelect) {
+            editHomeSelect.innerHTML = '<option value="">Select Home Team</option>' + options;
+        }
+        if (editAwaySelect) {
+            editAwaySelect.innerHTML = '<option value="">Select Away Team</option>' + options;
+        }
     } catch (error) {
         console.error('Error loading clubs:', error);
     }
@@ -141,20 +199,31 @@ async function loadMatches() {
             return;
         }
         
-        tbody.innerHTML = matches.map(match => `
+        tbody.innerHTML = matches.map(match => {
+            // Format score display
+            let scoreDisplay = '';
+            if (match.home_score !== null && match.away_score !== null) {
+                scoreDisplay = ` (${match.home_score} - ${match.away_score})`;
+            }
+            
+            return `
             <tr>
                 <td>${new Date(match.match_date).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
-                <td>${match.home_team}</td>
-                <td>${match.away_team}</td>
+                <td>${match.home_team}${match.home_score !== null ? ` <strong style="color: #10b981;">${match.home_score}</strong>` : ''}</td>
+                <td>${match.away_team}${match.away_score !== null ? ` <strong style="color: #10b981;">${match.away_score}</strong>` : ''}</td>
                 <td><span class="role-badge user">${match.league_name}</span></td>
                 <td><span class="status-badge status-${match.status}">${match.status}</span></td>
                 <td>
+                    <button class="btn-edit" onclick="showEditMatchModal(${match.match_id})" style="margin-right: 8px;" title="Edit match details${match.status === 'Finished' ? ' and scores' : ''}">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </button>
                     <button class="btn-delete" onclick="deleteMatch(${match.match_id})">
                         <i class="fa-solid fa-trash"></i> Delete
                     </button>
                 </td>
             </tr>
-        `).join('');
+            `;
+        }).join('');
     } catch (error) {
         console.error('Error loading matches:', error);
     }
@@ -182,6 +251,99 @@ async function deleteMatch(matchId) {
     } catch (error) {
         console.error('Error deleting match:', error);
         alert('Cannot connect to server');
+    }
+}
+
+// Show edit match modal
+async function showEditMatchModal(matchId) {
+    try {
+        // Load clubs first
+        await loadClubsForMatch();
+        
+        // Fetch match details
+        const response = await fetch(`http://localhost:3000/api/matches/${matchId}`);
+        const match = await response.json();
+        
+        // Populate form fields
+        document.getElementById('editMatchId').value = match.match_id;
+        document.getElementById('editHomeTeam').value = match.home_club_id;
+        document.getElementById('editAwayTeam').value = match.away_club_id;
+        document.getElementById('editLeague').value = match.league_id;
+        document.getElementById('editStadium').value = match.venue || '';
+        document.getElementById('editMatchStatus').value = match.status;
+        document.getElementById('editHomeScore').value = match.home_score || '';
+        document.getElementById('editAwayScore').value = match.away_score || '';
+        
+        // Format datetime-local value
+        if (match.match_date) {
+            const date = new Date(match.match_date);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            document.getElementById('editMatchDateTime').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+        
+        // Show modal
+        document.getElementById('editMatchModal').style.display = 'block';
+    } catch (error) {
+        console.error('Error loading match details:', error);
+        alert('Failed to load match details');
+    }
+}
+
+// Update match
+async function updateMatch(event) {
+    event.preventDefault();
+    
+    const matchId = document.getElementById('editMatchId').value;
+    const matchData = {
+        home_club_id: parseInt(document.getElementById('editHomeTeam').value),
+        away_club_id: parseInt(document.getElementById('editAwayTeam').value),
+        league_id: parseInt(document.getElementById('editLeague').value),
+        match_date: document.getElementById('editMatchDateTime').value,
+        venue: document.getElementById('editStadium').value,
+        status: document.getElementById('editMatchStatus').value,
+        home_score: document.getElementById('editHomeScore').value ? parseInt(document.getElementById('editHomeScore').value) : null,
+        away_score: document.getElementById('editAwayScore').value ? parseInt(document.getElementById('editAwayScore').value) : null
+    };
+    
+    // Validate
+    if (!matchData.home_club_id || !matchData.away_club_id || !matchData.league_id || !matchData.match_date) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    if (matchData.home_club_id === matchData.away_club_id) {
+        alert('Home and away teams must be different');
+        return;
+    }
+    
+    try {
+        const session = JSON.parse(localStorage.getItem('statarena_session') || sessionStorage.getItem('statarena_session'));
+        
+        const response = await fetch(`http://localhost:3000/api/matches/${matchId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${session.token}`
+            },
+            body: JSON.stringify(matchData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            alert('Match updated successfully!');
+            closeModal('editMatchModal');
+            loadMatches();
+        } else {
+            alert(result.error || result.message || 'Failed to update match');
+        }
+    } catch (error) {
+        console.error('Error updating match:', error);
+        alert('Cannot connect to server: ' + error.message);
     }
 }
 
@@ -371,104 +533,123 @@ async function deleteTicket(ticketId) {
 
 
 // Load and display all users
-function loadUsers() {
-    const users = JSON.parse(localStorage.getItem('statarena_users') || '[]');
-    const tbody = document.getElementById('usersTableBody');
-    
-    if (users.length === 0) {
-        tbody.innerHTML = `
+async function loadUsers() {
+    try {
+        const response = await fetch('http://localhost:3000/api/users');
+        const users = await response.json();
+        
+        const tbody = document.getElementById('usersTableBody');
+        
+        if (!users || users.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="5" style="text-align: center; color: #64748b;">
+                        No users registered yet
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tbody.innerHTML = users.map(user => `
             <tr>
-                <td colspan="5" style="text-align: center; color: #64748b;">
-                    No users registered yet
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>
+                    <span class="role-badge ${user.role}">
+                        ${user.role.toUpperCase()}
+                    </span>
+                </td>
+                <td>${new Date(user.created_at).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</td>
+                <td>
+                    <button 
+                        class="btn-delete" 
+                        onclick="deleteUser(${user.user_id}, '${user.email}')"
+                        ${user.role === 'admin' ? 'disabled title="Cannot delete admin account"' : ''}
+                    >
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
                 </td>
             </tr>
-        `;
-        return;
+        `).join('');
+    } catch (error) {
+        console.error('Error loading users:', error);
     }
-    
-    tbody.innerHTML = users.map((user, index) => `
-        <tr>
-            <td>${user.name}</td>
-            <td>${user.email}</td>
-            <td>
-                <span class="role-badge ${user.role || (user.email === 'k@k.com' ? 'admin' : 'user')}">
-                    ${user.role || (user.email === 'k@k.com' ? 'admin' : 'user')}
-                </span>
-            </td>
-            <td>${formatDate(user.createdAt)}</td>
-            <td>
-                <button 
-                    class="btn-delete" 
-                    onclick="deleteUser(${index})"
-                    ${user.email === 'k@k.com' ? 'disabled title="Cannot delete admin account"' : ''}
-                >
-                    <i class="fa-solid fa-trash"></i> Delete
-                </button>
-            </td>
-        </tr>
-    `).join('');
 }
 
 // Delete user
-function deleteUser(index) {
+async function deleteUser(userId, userEmail) {
     if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
         return;
     }
     
-    const users = JSON.parse(localStorage.getItem('statarena_users') || '[]');
-    const deletedUser = users[index];
-    
     // Don't allow deleting admin account
-    if (deletedUser.email === 'k@k.com') {
+    if (userEmail === 'k@k.com') {
         alert('Cannot delete the administrator account!');
         return;
     }
     
-    users.splice(index, 1);
-    localStorage.setItem('statarena_users', JSON.stringify(users));
-    
-    // Clear session if deleted user is currently logged in
-    const session = JSON.parse(localStorage.getItem('statarena_session') || 
-                                sessionStorage.getItem('statarena_session') || '{}');
-    if (session.email === deletedUser.email) {
-        localStorage.removeItem('statarena_session');
-        sessionStorage.removeItem('statarena_session');
+    try {
+        const session = JSON.parse(localStorage.getItem('statarena_session') || sessionStorage.getItem('statarena_session'));
+        
+        const response = await fetch(`http://localhost:3000/api/users/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${session.token}`
+            }
+        });
+        
+        if (response.ok) {
+            alert('User deleted successfully!');
+            loadUsers();
+            updateStats(); // Refresh stats after deleting user
+        } else {
+            const error = await response.json();
+            alert(error.error || 'Failed to delete user');
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        alert('Cannot connect to server');
     }
-    
-    loadUsers();
-    updateStats();
-    alert('User deleted successfully!');
 }
 
 // Update statistics
-function updateStats() {
-    const users = JSON.parse(localStorage.getItem('statarena_users') || '[]');
-    const session = JSON.parse(localStorage.getItem('statarena_session') || 
-                                sessionStorage.getItem('statarena_session') || '{}');
-    
-    // Total users
-    document.getElementById('totalUsers').textContent = users.length;
-    
-    // Total admins
-    const adminCount = users.filter(u => u.role === 'admin' || u.email === 'k@k.com').length;
-    document.getElementById('totalAdmins').textContent = adminCount;
-    
-    // Active users (currently logged in)
-    document.getElementById('activeUsers').textContent = session.loggedIn ? '1' : '0';
-    
-    // New users this week
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-    const newUsers = users.filter(u => new Date(u.createdAt) > oneWeekAgo).length;
-    document.getElementById('newUsers').textContent = newUsers;
-    
-    // Storage used
-    const storageSize = new Blob([localStorage.getItem('statarena_users') || '']).size;
-    document.getElementById('storageUsed').textContent = (storageSize / 1024).toFixed(2) + ' KB';
-    
-    // Last login time
-    if (session.loginTime) {
-        document.getElementById('lastLogin').textContent = formatDate(session.loginTime);
+async function updateStats() {
+    try {
+        console.log('Fetching admin statistics...');
+        const response = await fetch('http://localhost:3000/api/users/stats');
+        
+        if (!response.ok) {
+            console.error('Failed to fetch stats:', response.status);
+            return;
+        }
+        
+        const stats = await response.json();
+        console.log('Admin stats loaded:', stats);
+        
+        // Update the dashboard stats
+        document.getElementById('totalUsers').textContent = stats.totalUsers || 0;
+        document.getElementById('totalAdmins').textContent = stats.totalAdmins || 0;
+        document.getElementById('activeUsers').textContent = stats.activeSessions || 0;
+        document.getElementById('newUsers').textContent = stats.newUsers || 0;
+        
+        // Update last login time from session
+        const session = JSON.parse(localStorage.getItem('statarena_session') || 
+                                    sessionStorage.getItem('statarena_session') || '{}');
+        if (session.loginTime) {
+            document.getElementById('lastLogin').textContent = formatDate(session.loginTime);
+        }
+        
+        // Calculate approximate storage used (this is just for display)
+        const storageSize = new Blob([JSON.stringify(stats)]).size;
+        document.getElementById('storageUsed').textContent = (storageSize / 1024).toFixed(2) + ' KB';
+    } catch (error) {
+        console.error('Error updating stats:', error);
+        // Set default values on error
+        document.getElementById('totalUsers').textContent = '0';
+        document.getElementById('totalAdmins').textContent = '0';
+        document.getElementById('activeUsers').textContent = '0';
+        document.getElementById('newUsers').textContent = '0';
     }
 }
 

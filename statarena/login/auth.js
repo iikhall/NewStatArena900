@@ -57,6 +57,7 @@ async function handleSignIn(event) {
                 token: data.token,
                 user_id: data.user.user_id,
                 name: data.user.name,
+                username: data.user.username || data.user.name, // Use username field
                 email: data.user.email,
                 role: data.user.role,
                 loggedIn: true,

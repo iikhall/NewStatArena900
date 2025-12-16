@@ -245,6 +245,22 @@ body {
     cursor: not-allowed;
 }
 
+.btn-edit {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #2563eb;
+}
+
 /* System Info */
 .system-info {
     background-color: #1a202c;
